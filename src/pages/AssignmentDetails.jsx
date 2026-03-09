@@ -30,13 +30,13 @@ const AssignmentDetails = () => {
                 setCurrentUser(user);
 
                 // Fetch Assignment
-                const resAssign = await axios.get(`http://localhost:5000/api/assignments/${assignmentId}`, {
+                const resAssign = await axios.get(`https://inkless-backend.vercel.app/api/assignments/${assignmentId}`, {
                     headers: { 'x-auth-token': token }
                 });
                 setAssignment(resAssign.data);
 
                 // Fetch My Submission (if exists)
-                const resSub = await axios.get(`http://localhost:5000/api/submissions/my/${assignmentId}`, {
+                const resSub = await axios.get(`https://inkless-backend.vercel.app/api/submissions/my/${assignmentId}`, {
                     headers: { 'x-auth-token': token }
                 });
                 if (resSub.data) {
@@ -68,7 +68,7 @@ const AssignmentDetails = () => {
             if (assignment.submissionTypes?.image && files.image) formData.append('image', files.image);
 
             const token = localStorage.getItem('token');
-            const res = await axios.post('http://localhost:5000/api/submissions', formData, {
+            const res = await axios.post('https://inkless-backend.vercel.app/api/submissions', formData, {
                 headers: {
                     'x-auth-token': token,
                     'Content-Type': 'multipart/form-data'
@@ -120,7 +120,7 @@ const AssignmentDetails = () => {
                     <span className="flex items-center gap-1"><Clock className="w-4 h-4" /> Due: {assignment.deadline ? new Date(assignment.deadline).toLocaleString() : 'No Deadline'}</span>
                     <span className="flex items-center gap-1"><FileText className="w-4 h-4" /> Marks: {assignment.marks}</span>
                     {assignment.fileUrl && (
-                        <a href={`http://localhost:5000${assignment.fileUrl}`} target="_blank" rel="noreferrer" className="text-blue-500 hover:underline flex items-center gap-1">
+                        <a href={`https://inkless-backend.vercel.app${assignment.fileUrl}`} target="_blank" rel="noreferrer" className="text-blue-500 hover:underline flex items-center gap-1">
                             <Upload className="w-4 h-4" /> Attached File
                         </a>
                     )}
@@ -187,7 +187,7 @@ const AssignmentDetails = () => {
                                 {submission?.imagePath && (
                                     <div className="mb-4">
                                         <p className="text-xs text-secondary-foreground mb-1">Current Upload:</p>
-                                        <img src={`http://localhost:5000${submission.imagePath}`} alt="Submission" className="max-h-60 rounded border border-border" />
+                                        <img src={`https://inkless-backend.vercel.app${submission.imagePath}`} alt="Submission" className="max-h-60 rounded border border-border" />
                                     </div>
                                 )}
                                 {submission?.status !== 'graded' && (

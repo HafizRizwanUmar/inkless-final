@@ -19,7 +19,7 @@ const CreateClass = () => {
         e.preventDefault();
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch('http://localhost:5000/api/classes', {
+            const res = await fetch('https://inkless-backend.vercel.app/api/classes', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -55,7 +55,7 @@ const CreateAssignment = () => {
             }
 
             const token = localStorage.getItem('token');
-            await axios.post('http://localhost:5000/api/assignments', data, {
+            await axios.post('https://inkless-backend.vercel.app/api/assignments', data, {
                 headers: {
                     'x-auth-token': token,
                     'Content-Type': 'multipart/form-data'

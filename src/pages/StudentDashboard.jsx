@@ -71,7 +71,7 @@ const StudentDashboard = () => {
             try {
                 const token = localStorage.getItem('token');
                 const hdrs = { headers: { 'x-auth-token': token } };
-                const res = await fetch('http://localhost:5000/api/classes', { headers: { 'x-auth-token': token } });
+                const res = await fetch('https://inkless-backend.vercel.app/api/classes', { headers: { 'x-auth-token': token } });
                 const classData = await res.json();
 
                 // Fetch next assignment for each class
@@ -80,10 +80,10 @@ const StudentDashboard = () => {
                 const enrichedClasses = await Promise.all(classData.map(async (cls) => {
                     try {
                         // Fetch both Assignments and Labs
-                        const resAss = await fetch(`http://localhost:5000/api/assignments/class/${cls._id}`, hdrs);
+                        const resAss = await fetch(`https://inkless-backend.vercel.app/api/assignments/class/${cls._id}`, hdrs);
                         const assignments = await resAss.json();
 
-                        const resLab = await fetch(`http://localhost:5000/api/lab-tasks/class/${cls._id}`, hdrs);
+                        const resLab = await fetch(`https://inkless-backend.vercel.app/api/lab-tasks/class/${cls._id}`, hdrs);
                         const labs = await resLab.json();
 
                         // Combine and sort by deadline > now

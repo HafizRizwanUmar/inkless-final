@@ -44,13 +44,13 @@ const QuizAttempt = () => {
                 const token = localStorage.getItem('token');
 
                 try {
-                    const attemptRes = await axios.get(`http://localhost:5000/api/quizzes/attempt/${quizId}`, {
+                    const attemptRes = await axios.get(`https://inkless-backend.vercel.app/api/quizzes/attempt/${quizId}`, {
                         headers: { 'x-auth-token': token }
                     });
                     if (attemptRes.data) {
                         setResult(attemptRes.data);
                         setLoading(false);
-                        const quizRes = await axios.get(`http://localhost:5000/api/quizzes/${quizId}`, {
+                        const quizRes = await axios.get(`https://inkless-backend.vercel.app/api/quizzes/${quizId}`, {
                             headers: { 'x-auth-token': token }
                         });
                         setQuiz(quizRes.data);
@@ -62,7 +62,7 @@ const QuizAttempt = () => {
                     }
                 }
 
-                const res = await axios.get(`http://localhost:5000/api/quizzes/${quizId}`, {
+                const res = await axios.get(`https://inkless-backend.vercel.app/api/quizzes/${quizId}`, {
                     headers: { 'x-auth-token': token }
                 });
                 setQuiz(res.data);
@@ -97,7 +97,7 @@ const QuizAttempt = () => {
                 ...answers[key]
             }));
 
-            const res = await axios.post('http://localhost:5000/api/quizzes/attempt', {
+            const res = await axios.post('https://inkless-backend.vercel.app/api/quizzes/attempt', {
                 quizId,
                 answers: formattedAnswers,
                 strikes: strikeRef.current.total,

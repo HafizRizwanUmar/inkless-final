@@ -35,7 +35,7 @@ const ClassDetails = () => {
         const fetchClassData = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const res = await axios.get(`http://localhost:5000/api/classes/${classId}`, { headers: { 'x-auth-token': token } });
+                const res = await axios.get(`https://inkless-backend.vercel.app/api/classes/${classId}`, { headers: { 'x-auth-token': token } });
                 setClassData(res.data);
 
                 // Decode token
@@ -56,10 +56,10 @@ const ClassDetails = () => {
         if (!classId || !token) return;
         const hdrs = { headers: { 'x-auth-token': token } };
 
-        if (activeTab === 'Quizzes') axios.get(`http://localhost:5000/api/quizzes/class/${classId}`, hdrs).then(res => setQuizzes(res.data)).catch(console.error);
-        if (activeTab === 'Assignments') axios.get(`http://localhost:5000/api/assignments/class/${classId}`, hdrs).then(res => setAssignments(res.data)).catch(console.error);
-        if (activeTab === 'Lab Tasks') axios.get(`http://localhost:5000/api/lab-tasks/class/${classId}`, hdrs).then(res => setLabTasks(res.data)).catch(console.error);
-        if (activeTab === 'Analytics') axios.get(`http://localhost:5000/api/classes/${classId}/analytics`, hdrs).then(res => setAnalyticsData(res.data)).catch(console.error);
+        if (activeTab === 'Quizzes') axios.get(`https://inkless-backend.vercel.app/api/quizzes/class/${classId}`, hdrs).then(res => setQuizzes(res.data)).catch(console.error);
+        if (activeTab === 'Assignments') axios.get(`https://inkless-backend.vercel.app/api/assignments/class/${classId}`, hdrs).then(res => setAssignments(res.data)).catch(console.error);
+        if (activeTab === 'Lab Tasks') axios.get(`https://inkless-backend.vercel.app/api/lab-tasks/class/${classId}`, hdrs).then(res => setLabTasks(res.data)).catch(console.error);
+        if (activeTab === 'Analytics') axios.get(`https://inkless-backend.vercel.app/api/classes/${classId}/analytics`, hdrs).then(res => setAnalyticsData(res.data)).catch(console.error);
     }, [activeTab, classId]);
 
     if (!classData || !currentUser) return <div className="flex h-screen items-center justify-center text-secondary-foreground">Loading...</div>;
@@ -71,7 +71,7 @@ const ClassDetails = () => {
         if (!confirm) return;
         try {
             const token = localStorage.getItem('token');
-            await axios.put(`http://localhost:5000/api/classes/${classId}/archive`, {}, {
+            await axios.put(`https://inkless-backend.vercel.app/api/classes/${classId}/archive`, {}, {
                 headers: { 'x-auth-token': token }
             });
             navigate('/teacher/dashboard');

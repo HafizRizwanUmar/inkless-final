@@ -21,8 +21,8 @@ const SubmissionList = () => {
                 setRole(userRole);
 
                 const endpoint = userRole === 'teacher'
-                    ? 'http://localhost:5000/api/submissions/teacher/pending'
-                    : 'http://localhost:5000/api/submissions/student/pending';
+                    ? 'https://inkless-backend.vercel.app/api/submissions/teacher/pending'
+                    : 'https://inkless-backend.vercel.app/api/submissions/student/pending';
 
                 const res = await axios.get(endpoint, {
                     headers: { 'x-auth-token': token }

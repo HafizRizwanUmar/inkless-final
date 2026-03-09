@@ -67,7 +67,7 @@ const CreateLabTask = () => {
                 submitData.append('taskDocument', taskDocument);
             }
 
-            await axios.post('http://localhost:5000/api/lab-tasks', submitData, {
+            await axios.post('https://inkless-backend.vercel.app/api/lab-tasks', submitData, {
                 headers: {
                     'x-auth-token': token,
                     'Content-Type': 'multipart/form-data'

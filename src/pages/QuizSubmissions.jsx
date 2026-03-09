@@ -35,7 +35,7 @@ const QuizSubmissions = () => {
         const fetch = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const res = await axios.get(`http://localhost:5000/api/quizzes/submissions/${quizId}`, {
+                const res = await axios.get(`https://inkless-backend.vercel.app/api/quizzes/submissions/${quizId}`, {
                     headers: { 'x-auth-token': token }
                 });
                 setData(res.data);
@@ -53,8 +53,8 @@ const QuizSubmissions = () => {
             setDownloading(type);
             const token = localStorage.getItem('token');
             const endpoint = type === 'excel'
-                ? `http://localhost:5000/api/quizzes/export/excel/${quizId}`
-                : `http://localhost:5000/api/quizzes/export/pdf-zip/${quizId}`;
+                ? `https://inkless-backend.vercel.app/api/quizzes/export/excel/${quizId}`
+                : `https://inkless-backend.vercel.app/api/quizzes/export/pdf-zip/${quizId}`;
             const ext = type === 'excel' ? 'xlsx' : 'zip';
             const mimeType = type === 'excel'
                 ? 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'

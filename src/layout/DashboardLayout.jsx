@@ -50,7 +50,7 @@ const DashboardLayout = () => {
             // 3. Fetch Classes
             const fetchClasses = async () => {
                 try {
-                    const res = await fetch('http://localhost:5000/api/classes', {
+                    const res = await fetch('https://inkless-backend.vercel.app/api/classes', {
                         headers: { 'x-auth-token': token }
                     });
                     const data = await res.json();

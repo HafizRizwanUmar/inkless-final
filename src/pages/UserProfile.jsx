@@ -19,7 +19,7 @@ const UserProfile = () => {
         const fetchProfile = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const res = await axios.get('http://localhost:5000/api/auth/profile', {
+                const res = await axios.get('https://inkless-backend.vercel.app/api/auth/profile', {
                     headers: { 'x-auth-token': token }
                 });
 
@@ -48,7 +48,7 @@ const UserProfile = () => {
     const handleSave = async () => {
         try {
             const token = localStorage.getItem('token');
-            await axios.put('http://localhost:5000/api/auth/profile', {
+            await axios.put('https://inkless-backend.vercel.app/api/auth/profile', {
                 name: profile.name,
                 bio: profile.bio,
                 theme: profile.theme,

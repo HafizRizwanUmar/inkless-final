@@ -202,7 +202,7 @@ const TeacherDashboard = () => {
     const fetchClasses = async () => {
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch('http://localhost:5000/api/classes', {
+            const res = await fetch('https://inkless-backend.vercel.app/api/classes', {
                 headers: { 'x-auth-token': token }
             });
             const data = await res.json();
@@ -223,7 +223,7 @@ const TeacherDashboard = () => {
 
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch(`http://localhost:5000/api/classes/${classId}`, {
+            const res = await fetch(`https://inkless-backend.vercel.app/api/classes/${classId}`, {
                 method: 'DELETE',
                 headers: { 'x-auth-token': token }
             });
@@ -246,7 +246,7 @@ const TeacherDashboard = () => {
     const handleSaveClass = async (classId, updatedData) => {
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch(`http://localhost:5000/api/classes/${classId}`, {
+            const res = await fetch(`https://inkless-backend.vercel.app/api/classes/${classId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

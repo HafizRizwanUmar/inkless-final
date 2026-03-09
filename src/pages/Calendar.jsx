@@ -19,15 +19,15 @@ const Calendar = () => {
                 // Fetch all classes first (to get class names if needed, though we can fetch tasks direct if API supports 'my-tasks')
                 // Assuming we need to iter classes for now or if there's a 'my-tasks' endpoint.
                 // Given current API structure, we iterate enrolled classes.
-                const resClasses = await axios.get('http://localhost:5000/api/classes', hdrs);
+                const resClasses = await axios.get('https://inkless-backend.vercel.app/api/classes', hdrs);
                 const classes = resClasses.data;
 
                 let allItems = [];
 
                 await Promise.all(classes.map(async (cls) => {
                     const [resAss, resLab] = await Promise.all([
-                        axios.get(`http://localhost:5000/api/assignments/class/${cls._id}`, hdrs),
-                        axios.get(`http://localhost:5000/api/lab-tasks/class/${cls._id}`, hdrs)
+                        axios.get(`https://inkless-backend.vercel.app/api/assignments/class/${cls._id}`, hdrs),
+                        axios.get(`https://inkless-backend.vercel.app/api/lab-tasks/class/${cls._id}`, hdrs)
                     ]);
 
                     const assigns = resAss.data.map(a => ({ ...a, type: 'Assignment', classTitle: cls.title }));

@@ -16,7 +16,7 @@ const Submissions = () => {
         const fetchSubmissions = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const res = await axios.get(`http://localhost:5000/api/submissions/assignment/${assignmentId}`, {
+                const res = await axios.get(`https://inkless-backend.vercel.app/api/submissions/assignment/${assignmentId}`, {
                     headers: { 'x-auth-token': token }
                 });
                 setSubmissions(res.data);

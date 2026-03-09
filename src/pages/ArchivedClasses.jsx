@@ -11,7 +11,7 @@ const ArchivedClasses = () => {
     const fetchArchivedClasses = async () => {
         try {
             const token = localStorage.getItem('token');
-            const res = await axios.get('http://localhost:5000/api/classes/archived', {
+            const res = await axios.get('https://inkless-backend.vercel.app/api/classes/archived', {
                 headers: { 'x-auth-token': token }
             });
             setClasses(res.data);
@@ -29,7 +29,7 @@ const ArchivedClasses = () => {
     const handleRestore = async (classId) => {
         try {
             const token = localStorage.getItem('token');
-            await axios.put(`http://localhost:5000/api/classes/${classId}/archive`, {}, {
+            await axios.put(`https://inkless-backend.vercel.app/api/classes/${classId}/archive`, {}, {
                 headers: { 'x-auth-token': token }
             });
             // Refresh list
