@@ -279,7 +279,7 @@ const GradingPage = () => {
                                 ))}
                             </div>
                             <div className="ml-auto flex gap-2">
-                                <button onClick={undo} title="Undo" className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs bg-background border border-border text-secondary-foreground hover:text-white transition-colors">
+                                <button onClick={undo} title="Undo" className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs bg-background border border-border text-secondary-foreground hover:text-foreground transition-colors">
                                     <Undo2 className="w-4 h-4" />
                                 </button>
                                 <button onClick={() => setAnnotations([])} title="Clear All" className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs bg-red-500/10 border border-red-500/30 text-red-400 hover:bg-red-500/20 transition-colors">

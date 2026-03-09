@@ -329,7 +329,7 @@ const ClassDetails = () => {
                                                             isExpired ? (
                                                                 <button
                                                                     onClick={() => navigate('/quiz-attempt', { state: { quizId: quiz._id } })}
-                                                                    className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-background border border-border text-secondary-foreground text-sm font-bold hover:text-white transition-colors"
+                                                                    className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-background border border-border text-secondary-foreground text-sm font-bold hover:text-foreground transition-colors"
                                                                 >
                                                                     <CheckCircle className="w-4 h-4 text-green-500" /> View Result
                                                                 </button>
@@ -348,7 +348,7 @@ const ClassDetails = () => {
                                                         ) : (
                                                             <button
                                                                 onClick={() => navigate('/quiz-analytics', { state: { quizId: quiz._id } })}
-                                                                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-background border border-border text-secondary-foreground text-sm font-bold hover:text-white hover:border-primary/50 transition-colors"
+                                                                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-background border border-border text-secondary-foreground text-sm font-bold hover:text-foreground hover:border-primary/50 transition-colors"
                                                             >
                                                                 View Analytics
                                                             </button>

@@ -36,7 +36,7 @@ const Onboarding = () => {
     const skip = () => navigate('/login');
 
     return (
-        <div className="h-screen w-full bg-background text-white flex flex-col md:flex-row overflow-hidden">
+        <div className="h-screen w-full bg-background text-foreground flex flex-col md:flex-row overflow-hidden">
             {/* Image Section */}
             <div className="w-full md:w-1/2 h-1/2 md:h-full relative overflow-hidden bg-surface">
                 <AnimatePresence mode="wait">

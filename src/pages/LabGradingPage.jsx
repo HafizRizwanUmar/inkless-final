@@ -260,7 +260,7 @@ const LabGradingPage = () => {
                                             style={{ background: c }} />
                                     ))}
                                 </div>
-                                <button onClick={() => setAnnotations(prev => prev.slice(0, -1))} className="ml-auto px-2 py-1.5 rounded-lg text-xs bg-background border border-border text-secondary-foreground hover:text-white">
+                                <button onClick={() => setAnnotations(prev => prev.slice(0, -1))} className="ml-auto px-2 py-1.5 rounded-lg text-xs bg-background border border-border text-secondary-foreground hover:text-foreground">
                                     <Undo2 className="w-3.5 h-3.5" />
                                 </button>
                                 <button onClick={() => setAnnotations([])} className="px-2 py-1.5 rounded-lg text-xs bg-red-500/10 border border-red-500/30 text-red-400">

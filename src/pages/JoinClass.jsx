@@ -68,7 +68,7 @@ const JoinClass = () => {
                                 required
                                 value={code}
                                 onChange={(e) => setCode(e.target.value)}
-                                className="peer w-full bg-background/50 border-b-2 border-border px-3 py-3 pt-6 text-white text-base focus:border-primary focus:outline-none transition-colors placeholder-transparent"
+                                className="peer w-full bg-background/50 border-b-2 border-border px-3 py-3 pt-6 text-foreground text-base focus:border-primary focus:outline-none transition-colors placeholder-transparent"
                                 placeholder="Class code"
                             />
                             <label className="absolute left-3 top-2 text-xs text-secondary-foreground transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-secondary-foreground/70 peer-focus:top-2 peer-focus:text-xs peer-focus:text-primary">

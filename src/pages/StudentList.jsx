@@ -73,7 +73,7 @@ const StudentList = () => {
                                     </span>
                                 </td>
                                 <td className="px-6 py-4 text-right flex items-center justify-end space-x-2">
-                                    <button className="p-2 hover:bg-background rounded-full transition-colors text-secondary-foreground hover:text-white" title="Email">
+                                    <button className="p-2 hover:bg-background rounded-full transition-colors text-secondary-foreground hover:text-foreground" title="Email">
                                         <Mail className="w-4 h-4" />
                                     </button>
                                     <button className="p-2 hover:bg-red-500/10 rounded-full transition-colors text-secondary-foreground hover:text-red-500" title="Remove">

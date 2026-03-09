@@ -425,7 +425,7 @@ const QuizBuilder = () => {
                         <div className="flex gap-2">
                             {['MCQ', 'SHORT', 'LONG'].map(t => (
                                 <button key={t} onClick={() => addQuestion(t)}
-                                    className="px-3 py-1.5 rounded-lg bg-surface border border-border text-xs font-bold text-secondary-foreground hover:text-white hover:border-primary/50 transition-colors flex items-center gap-1">
+                                    className="px-3 py-1.5 rounded-lg bg-surface border border-border text-xs font-bold text-secondary-foreground hover:text-foreground hover:border-primary/50 transition-colors flex items-center gap-1">
                                     <Plus className="w-3.5 h-3.5" /> {t}
                                 </button>
                             ))}

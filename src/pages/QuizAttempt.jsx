@@ -258,8 +258,8 @@ const QuizAttempt = () => {
         setAnswers({ ...answers, [currentQuestion]: { textAnswer: text } });
     };
 
-    if (loading) return <div className="min-h-screen bg-background flex items-center justify-center text-white text-lg">Loading Quiz...</div>;
-    if (!quiz) return <div className="min-h-screen bg-background flex items-center justify-center text-white text-lg">Quiz not found.</div>;
+    if (loading) return <div className="min-h-screen bg-background flex items-center justify-center text-foreground text-lg">Loading Quiz...</div>;
+    if (!quiz) return <div className="min-h-screen bg-background flex items-center justify-center text-foreground text-lg">Quiz not found.</div>;
 
     // ---- RESULT SCREEN ----
     if (result) {
@@ -340,7 +340,7 @@ const QuizAttempt = () => {
                                         ) : (
                                             <>
                                                 {studentAnswer?.textAnswer ? (
-                                                    <div className="bg-background border border-border rounded-xl p-4 text-sm text-white">
+                                                    <div className="bg-background border border-border rounded-xl p-4 text-sm text-foreground">
                                                         <p className="text-xs text-secondary-foreground mb-2 font-bold uppercase">Your Answer</p>
                                                         {studentAnswer.textAnswer}
                                                     </div>
@@ -379,7 +379,7 @@ const QuizAttempt = () => {
                             <XCircle className="w-16 h-16 text-red-500 mx-auto mb-4" />
                             <h1 className="text-2xl font-bold text-white mb-2">Quiz Closed</h1>
                             <p className="text-secondary-foreground">The deadline for this quiz has passed. You can no longer attempt it.</p>
-                            <button onClick={() => navigate(-1)} className="mt-6 bg-surface border border-border text-white px-8 py-2.5 rounded-xl font-bold hover:bg-muted/20">Go Back</button>
+                            <button onClick={() => navigate(-1)} className="mt-6 bg-surface border border-border text-foreground px-8 py-2.5 rounded-xl font-bold hover:bg-muted/20">Go Back</button>
                         </>
                     ) : isNotStarted ? (
                         <>
@@ -387,7 +387,7 @@ const QuizAttempt = () => {
                             <h1 className="text-2xl font-bold text-white mb-2">Not Available Yet</h1>
                             <p className="text-secondary-foreground mb-2">This quiz opens on:</p>
                             <p className="text-lg font-bold text-white">{new Date(quiz.startTime).toLocaleString()}</p>
-                            <button onClick={() => navigate(-1)} className="mt-6 bg-surface border border-border text-white px-8 py-2.5 rounded-xl font-bold hover:bg-muted/20">Go Back</button>
+                            <button onClick={() => navigate(-1)} className="mt-6 bg-surface border border-border text-foreground px-8 py-2.5 rounded-xl font-bold hover:bg-muted/20">Go Back</button>
                         </>
                     ) : (
                         <>
@@ -510,7 +510,7 @@ const QuizAttempt = () => {
                                     value={answers[currentQuestion]?.textAnswer || ''}
                                     onChange={(e) => handleTextAnswer(e.target.value)}
                                     placeholder={`Enter your ${question.type === 'SHORT' ? 'short' : 'detailed'} answer here...`}
-                                    className="w-full h-48 p-4 bg-surface border border-border rounded-2xl text-lg focus:border-primary focus:ring-1 focus:ring-primary outline-none resize-none text-white"
+                                    className="w-full h-48 p-4 bg-surface border border-border rounded-2xl text-lg focus:border-primary focus:ring-1 focus:ring-primary outline-none resize-none text-foreground"
                                 />
                             )}
                         </div>

@@ -13,7 +13,7 @@ const AuditLogs = () => {
         <div className="space-y-6">
             <div className="flex justify-between items-center">
                 <h1 className="text-2xl font-bold">System Audit Logs</h1>
-                <button className="flex items-center gap-2 bg-surface text-secondary-foreground border border-border px-4 py-2 rounded-lg hover:text-white hover:border-primary">
+                <button className="flex items-center gap-2 bg-surface text-secondary-foreground border border-border px-4 py-2 rounded-lg hover:text-foreground hover:border-primary">
                     <Download className="w-4 h-4" /> Export CSV
                 </button>
             </div>

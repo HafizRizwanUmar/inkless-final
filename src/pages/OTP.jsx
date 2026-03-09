@@ -60,7 +60,7 @@ const OTP = () => {
                                 value={digit}
                                 onChange={(e) => handleChange(index, e.target.value)}
                                 onKeyDown={(e) => handleKeyDown(index, e)}
-                                className="w-12 h-12 md:w-14 md:h-14 bg-background border border-border rounded-lg text-center text-xl font-bold text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                                className="w-12 h-12 md:w-14 md:h-14 bg-background border border-border rounded-lg text-center text-xl font-bold text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                             />
                         ))}
                     </div>

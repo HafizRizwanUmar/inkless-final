@@ -15,7 +15,7 @@ const ManualMarking = () => {
                 </div>
 
                 {/* Floating Toolbar */}
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-surface text-white px-4 py-2 rounded-full shadow-xl flex space-x-4">
+                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-surface text-foreground px-4 py-2 rounded-full shadow-xl flex space-x-4">
                     <button className="hover:text-primary"><PenTool className="w-5 h-5" /></button>
                     <button className="hover:text-primary"><MessageSquare className="w-5 h-5" /></button>
                 </div>

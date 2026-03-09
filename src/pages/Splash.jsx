@@ -14,7 +14,7 @@ const Splash = () => {
     }, [navigate]);
 
     return (
-        <div className="h-screen w-full bg-background flex flex-col items-center justify-center text-white">
+        <div className="h-screen w-full bg-background flex flex-col items-center justify-center text-foreground">
             <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
