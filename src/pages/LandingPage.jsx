@@ -3,6 +3,7 @@ import LandingNavbar from '../components/Landing/LandingNavbar';
 import HeroSection from '../components/Landing/HeroSection';
 import FeaturesSection from '../components/Landing/FeaturesSection';
 import DarkShowcaseSection from '../components/Landing/DarkShowcaseSection';
+import WorkflowSection from '../components/Landing/WorkflowSection';
 import Footer from '../components/Landing/Footer';
 
 const LandingPage = () => {
@@ -13,6 +14,7 @@ const LandingPage = () => {
                 <HeroSection />
                 <FeaturesSection />
                 <DarkShowcaseSection />
+                <WorkflowSection />
             </main>
             <Footer />
         </div>
