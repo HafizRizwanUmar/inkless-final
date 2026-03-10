@@ -7,10 +7,10 @@ const StudentPerformanceReport = () => {
             {/* Print/Download Header - This simulated a printable report page */}
             <div className="flex justify-between items-start border-b pb-8 border-gray-200">
                 <div>
-                    <h1 className="text-3xl font-bold text-blue-900">Academic Performance Report</h1>
+                    <h1 className="text-3xl font-bold text-brand-dark">Academic Performance Report</h1>
                     <p className="text-gray-600 mt-2">Fall 2025 • Computer Science Department</p>
                 </div>
-                <button className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 print:hidden">
+                <button className="flex items-center gap-2 bg-brand-muted text-white px-4 py-2 rounded shadow hover:bg-brand-muted print:hidden">
                     <Download className="w-4 h-4" /> Download PDF
                 </button>
             </div>
@@ -24,7 +24,7 @@ const StudentPerformanceReport = () => {
                 </div>
                 <div className="text-right">
                     <h3 className="font-bold text-gray-500 uppercase text-xs tracking-wider mb-2">Cumulative GPA</h3>
-                    <p className="font-bold text-4xl text-blue-600">3.85</p>
+                    <p className="font-bold text-4xl text-brand-muted">3.85</p>
                     <p className="text-sm text-green-600 font-bold">Excellent Standing</p>
                 </div>
             </div>
@@ -57,7 +57,7 @@ const StudentPerformanceReport = () => {
                             <td className="px-4 py-3">80%</td>
                             <td className="px-4 py-3">70%</td>
                             <td className="px-4 py-3 font-bold">75.0%</td>
-                            <td className="px-4 py-3 text-blue-600 font-bold">B+</td>
+                            <td className="px-4 py-3 text-brand-muted font-bold">B+</td>
                         </tr>
                     </tbody>
                 </table>

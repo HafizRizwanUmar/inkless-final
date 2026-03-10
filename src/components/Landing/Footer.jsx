@@ -5,7 +5,7 @@ import InklessLogo from '../InklessLogo';
 
 const Footer = () => {
     return (
-        <footer className="relative w-full bg-gradient-to-br from-purple-800 to-indigo-900 text-white pt-24 pb-12 overflow-hidden">
+        <footer className="relative w-full bg-gradient-to-br from-brand-dark to-brand-dark text-white pt-24 pb-12 overflow-hidden">
             {/* Large Watermark Text */}
             <div className="absolute bottom-0 left-0 w-full overflow-hidden opacity-5 pointer-events-none select-none">
                 <h1 className="text-[17vw] font-bold tracking-tighter text-white leading-none whitespace-nowrap">
@@ -37,12 +37,12 @@ const Footer = () => {
 
                     {/* Links Columns */}
                     <div>
-                        <h4 className="font-semibold mb-6">Products</h4>
+                        <h4 className="font-semibold mb-6">Features</h4>
                         <ul className="space-y-4 text-gray-300 text-sm">
-                            <li><a href="#" className="hover:text-white transition-colors">Grading</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors">AI Insights</a></li>
+                            <li><a href="#" className="hover:text-white transition-colors">Course Management</a></li>
+                            <li><a href="#" className="hover:text-white transition-colors">Student Analytics</a></li>
+                            <li><a href="#" className="hover:text-white transition-colors">AI Grading</a></li>
                             <li><a href="#" className="hover:text-white transition-colors">Plagiarism Check</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors">Report Cards</a></li>
                         </ul>
                     </div>
 

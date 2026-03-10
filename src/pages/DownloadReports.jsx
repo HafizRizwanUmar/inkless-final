@@ -35,9 +35,9 @@ const DownloadReports = () => {
                         {[1, 2, 3].map(i => <div key={i} className="w-10 h-10 rounded-full bg-surface border-2 border-background flex items-center justify-center text-xs">S{i}</div>)}
                     </div>
                 </div>
-                <div className="bg-gradient-to-br from-blue-500/20 to-cyan-500/20 p-6 rounded-xl border border-blue-500/30 text-center">
+                <div className="bg-gradient-to-br from-brand-accent/20 to-cyan-500/20 p-6 rounded-xl border border-brand-accent/30 text-center">
                     <h3 className="font-bold text-white text-xl mb-1">Class Average</h3>
-                    <p className="text-blue-200 text-sm mb-4">Overall Performance</p>
+                    <p className="text-brand-light text-sm mb-4">Overall Performance</p>
                     <span className="text-4xl font-bold text-white">78%</span>
                 </div>
                 <div className="bg-gradient-to-br from-red-500/20 to-pink-500/20 p-6 rounded-xl border border-red-500/30 text-center">

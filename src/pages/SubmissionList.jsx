@@ -45,7 +45,7 @@ const SubmissionList = () => {
         <div className="max-w-5xl mx-auto space-y-8 pb-12">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">
+                    <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-brand-muted">
                         {role === 'teacher' ? 'To Review' : 'To-Do List'}
                     </h1>
                     <p className="text-secondary-foreground">
@@ -71,7 +71,7 @@ const SubmissionList = () => {
                                             {role === 'teacher' ? task.assignment?.title : task.title}
                                         </h3>
                                         {role === 'teacher' && <span className="text-xs bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full font-medium">Needs Grading</span>}
-                                        {role === 'student' && <span className="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full font-medium">Pending</span>}
+                                        {role === 'student' && <span className="text-xs bg-brand-cream text-brand-muted px-2 py-0.5 rounded-full font-medium">Pending</span>}
                                     </div>
                                     <p className="text-sm text-secondary-foreground">
                                         {role === 'teacher' ? `Student: ${task.student?.name}` : `Points: ${task.marks || 0}`}

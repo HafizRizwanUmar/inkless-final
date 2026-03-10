@@ -53,7 +53,7 @@ const MobileAppSection = () => {
                     <div className="space-y-12">
                         <div className="flex gap-4">
                             <div className="mt-1 bg-white p-3 rounded-2xl shadow-sm h-fit">
-                                <Smartphone size={24} className="text-purple-600" />
+                                <Smartphone size={24} className="text-brand-muted" />
                             </div>
                             <div>
                                 <h3 className="text-xl font-semibold text-gray-900 mb-2">The all-in-one grading app</h3>
@@ -95,7 +95,7 @@ const MobileAppSection = () => {
                 {/* Right Side: Mobile Mockup */}
                 <div className="relative flex justify-center lg:justify-end">
                     {/* Background Blob */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-purple-200/50 to-orange-100/50 rounded-full blur-3xl" />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-brand-light/50 to-orange-100/50 rounded-full blur-3xl" />
 
                     {/* Phone Frame */}
                     <div
@@ -127,8 +127,8 @@ const MobileAppSection = () => {
                                     <div className="text-2xl font-bold text-gray-900 mb-1">88.5% <span className="text-xs font-normal text-gray-400">Avg Grade</span></div>
                                     <div className="h-10 w-full flex items-end gap-1 mt-2">
                                         {[40, 60, 50, 80, 70, 90, 85].map((h, i) => (
-                                            <div key={i} className="flex-1 bg-purple-100 rounded-t-sm" style={{ height: `${h}%` }}>
-                                                <div className="w-full bg-purple-500 rounded-t-sm" style={{ height: '40%' }} />
+                                            <div key={i} className="flex-1 bg-brand-cream rounded-t-sm" style={{ height: `${h}%` }}>
+                                                <div className="w-full bg-brand-accent rounded-t-sm" style={{ height: '40%' }} />
                                             </div>
                                         ))}
                                     </div>
@@ -151,14 +151,14 @@ const MobileAppSection = () => {
                                 </div>
 
                                 {/* Floating Action Button */}
-                                <div className="absolute bottom-4 right-4 w-12 h-12 bg-purple-600 rounded-full shadow-lg flex items-center justify-center text-white">
+                                <div className="absolute bottom-4 right-4 w-12 h-12 bg-brand-muted rounded-full shadow-lg flex items-center justify-center text-white">
                                     <span className="text-2xl">+</span>
                                 </div>
                             </div>
 
                             {/* App Nav */}
                             <div className="h-16 bg-white border-t border-gray-100 flex justify-around items-center px-6">
-                                <div className="w-6 h-6 bg-purple-600 rounded-lg opacity-20" />
+                                <div className="w-6 h-6 bg-brand-muted rounded-lg opacity-20" />
                                 <div className="w-6 h-6 bg-gray-300 rounded-lg opacity-20" />
                                 <div className="w-6 h-6 bg-gray-300 rounded-lg opacity-20" />
                                 <div className="w-6 h-6 bg-gray-300 rounded-lg opacity-20" />

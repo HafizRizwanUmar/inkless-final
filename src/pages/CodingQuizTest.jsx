@@ -15,7 +15,7 @@ const CodingQuizTest = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label className="block text-sm font-medium text-secondary-foreground mb-2">Default Code Template</label>
-                        <textarea rows="10" className="w-full bg-slate-900 border border-border rounded-lg p-3 font-mono text-sm text-blue-100" placeholder="def solution(args):&#10;    pass" />
+                        <textarea rows="10" className="w-full bg-slate-900 border border-border rounded-lg p-3 font-mono text-sm text-brand-cream" placeholder="def solution(args):&#10;    pass" />
                         <p className="text-xs text-secondary-foreground mt-1">This code will be shown to the student initially.</p>
                     </div>
 

@@ -65,7 +65,7 @@ const Signup = () => {
             <div className="hidden lg:flex flex-col justify-center items-center bg-surface relative overflow-hidden border-r border-border p-12">
                 <div className="relative z-10 text-center space-y-6 max-w-lg">
                     <div className="flex justify-center mb-8">
-                        <div className="bg-white p-6 rounded-3xl shadow-2xl shadow-blue-500/20">
+                        <div className="bg-white p-6 rounded-3xl shadow-2xl shadow-brand-accent/20">
                             <InklessLogo className="w-24 h-24" />
                         </div>
                     </div>
@@ -80,7 +80,7 @@ const Signup = () => {
                 {/* Abstract Background Shapes */}
                 <div className="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none">
                     <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl mix-blend-multiply filter animate-blob" />
-                    <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl mix-blend-multiply filter animate-blob animation-delay-2000" />
+                    <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-brand-accent/20 rounded-full blur-3xl mix-blend-multiply filter animate-blob animation-delay-2000" />
                     <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl mix-blend-multiply filter animate-blob animation-delay-4000" />
                 </div>
             </div>

@@ -26,7 +26,7 @@ const WeeklySummary = () => {
                 </div>
                 <div className="bg-surface p-6 rounded-xl border border-border border-l-4 border-l-blue-500">
                     <div className="flex justify-between items-start mb-2">
-                        <BookOpen className="w-6 h-6 text-blue-500" />
+                        <BookOpen className="w-6 h-6 text-brand-accent" />
                         <span className="text-secondary-foreground text-xs font-bold">Total</span>
                     </div>
                     <div className="text-3xl font-bold">3</div>
@@ -60,7 +60,7 @@ const WeeklySummary = () => {
                             <p className="text-xs text-secondary-foreground">Mon, Oct 21 • 10:00 AM</p>
                         </div>
                         <div className="ml-6 relative">
-                            <div className="absolute -left-[31px] w-4 h-4 rounded-full bg-blue-500 border-4 border-background"></div>
+                            <div className="absolute -left-[31px] w-4 h-4 rounded-full bg-brand-accent border-4 border-background"></div>
                             <p className="text-sm font-bold">Lecture 5: Backpropagation</p>
                             <p className="text-xs text-secondary-foreground">Tue, Oct 22 • 02:00 PM</p>
                         </div>

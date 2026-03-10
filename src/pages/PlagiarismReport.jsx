@@ -20,7 +20,7 @@ const PlagiarismReport = () => {
                         { name: 'Wikipedia: Neural Networks', match: '15%', color: 'border-red-500' },
                         { name: 'GeeksforGeeks', match: '8%', color: 'border-orange-500' },
                         { name: 'Medium Article', match: '5%', color: 'border-yellow-500' },
-                        { name: 'University Archive', match: '4%', color: 'border-blue-500' },
+                        { name: 'University Archive', match: '4%', color: 'border-brand-accent' },
                     ].map((source, idx) => (
                         <div key={idx} className={`bg-background p-3 rounded-lg border-l-4 ${source.color} cursor-pointer hover:bg-white/5`}>
                             <div className="flex justify-between items-center mb-1">

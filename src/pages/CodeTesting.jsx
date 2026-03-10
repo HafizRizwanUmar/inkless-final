@@ -13,7 +13,7 @@ const CodeTesting = () => {
                         <span>Run Tests</span>
                     </button>
                 </div>
-                <div className="flex-1 p-4 overflow-y-auto text-blue-100">
+                <div className="flex-1 p-4 overflow-y-auto text-brand-cream">
                     <div className="flex">
                         <div className="text-secondary-foreground mr-4 opacity-50 text-right select-none">
                             1<br />2<br />3<br />4<br />5<br />6<br />7<br />8

@@ -30,7 +30,7 @@ const AIQuizGenerator = () => {
                             <span className="text-sm font-medium">Questions:</span>
                             <input type="number" defaultValue={10} className="w-16 bg-background border border-border rounded p-2 text-center" />
                         </div>
-                        <button className="flex-1 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold py-3 rounded-lg hover:shadow-lg hover:shadow-purple-500/25 transition-all flex items-center justify-center space-x-2">
+                        <button className="flex-1 bg-gradient-to-r from-brand-muted to-brand-muted text-white font-bold py-3 rounded-lg hover:shadow-lg hover:shadow-brand-accent/25 transition-all flex items-center justify-center space-x-2">
                             <Wand2 className="w-5 h-5" />
                             <span>Generate Quiz</span>
                         </button>
@@ -42,7 +42,7 @@ const AIQuizGenerator = () => {
             <div className="bg-surface rounded-xl border border-border flex flex-col overflow-hidden">
                 <div className="p-4 border-b border-border bg-background/50 flex justify-between items-center">
                     <h3 className="font-bold flex items-center gap-2">
-                        <Sparkles className="w-4 h-4 text-purple-400" />
+                        <Sparkles className="w-4 h-4 text-brand-accent" />
                         Generated Preview
                     </h3>
                     <div className="flex gap-2">

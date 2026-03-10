@@ -120,7 +120,7 @@ const AssignmentDetails = () => {
                     <span className="flex items-center gap-1"><Clock className="w-4 h-4" /> Due: {assignment.deadline ? new Date(assignment.deadline).toLocaleString() : 'No Deadline'}</span>
                     <span className="flex items-center gap-1"><FileText className="w-4 h-4" /> Marks: {assignment.marks}</span>
                     {assignment.fileUrl && (
-                        <a href={`https://inkless-backend.vercel.app${assignment.fileUrl}`} target="_blank" rel="noreferrer" className="text-blue-500 hover:underline flex items-center gap-1">
+                        <a href={`https://inkless-backend.vercel.app${assignment.fileUrl}`} target="_blank" rel="noreferrer" className="text-brand-accent hover:underline flex items-center gap-1">
                             <Upload className="w-4 h-4" /> Attached File
                         </a>
                     )}
@@ -129,7 +129,7 @@ const AssignmentDetails = () => {
 
             {/* Teacher View: Minimal info here, they go to Submissions page */}
             {isTeacher ? (
-                <div className="bg-blue-50 border border-blue-200 p-6 rounded-xl text-blue-800">
+                <div className="bg-brand-cream border border-brand-light p-6 rounded-xl text-brand-dark">
                     <h3 className="font-bold mb-2">Teacher View</h3>
                     <p>This is how the assignment looks to students. Use the "View Submissions" button to grade student work.</p>
                 </div>

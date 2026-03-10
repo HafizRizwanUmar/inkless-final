@@ -118,7 +118,7 @@ const QuizSubmissions = () => {
                     <button
                         onClick={() => handleDownload('zip')}
                         disabled={downloading === 'zip'}
-                        className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-purple-600 text-white text-sm font-bold hover:bg-purple-700 transition-colors disabled:opacity-50 shadow-sm"
+                        className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-brand-muted text-white text-sm font-bold hover:bg-brand-muted transition-colors disabled:opacity-50 shadow-sm"
                         title="Download ZIP with Best, Average & Worst student PDFs"
                     >
                         <FileArchive className="w-4 h-4" />
@@ -138,7 +138,7 @@ const QuizSubmissions = () => {
                     <span>Copy Attempts — student tried to copy text</span>
                 </div>
                 <div className="flex items-center gap-2">
-                    <Eye className="w-4 h-4 text-purple-400" />
+                    <Eye className="w-4 h-4 text-brand-accent" />
                     <span>Total Strikes — combined suspicious events</span>
                 </div>
             </div>
@@ -157,7 +157,7 @@ const QuizSubmissions = () => {
                                 <span className="flex items-center justify-center gap-1"><AlertTriangle className="w-3.5 h-3.5 text-red-400" /> Copy Attempts</span>
                             </th>
                             <th className="px-5 py-4 text-center">
-                                <span className="flex items-center justify-center gap-1"><Eye className="w-3.5 h-3.5 text-purple-400" /> Strikes</span>
+                                <span className="flex items-center justify-center gap-1"><Eye className="w-3.5 h-3.5 text-brand-accent" /> Strikes</span>
                             </th>
                             <th className="px-5 py-4 text-center">Submitted</th>
                             <th className="px-5 py-4 text-center">Details</th>

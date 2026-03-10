@@ -261,7 +261,7 @@ const QuizBuilder = () => {
                             <button key={opt.value} onClick={() => setMethod(opt.value)}
                                 className={`p-6 rounded-2xl border-2 text-left transition-all hover:shadow-lg flex flex-col gap-4
                                     ${method === opt.value ? 'border-primary bg-primary/10 shadow-primary/10 shadow-lg' : 'border-border bg-surface hover:border-primary/50'}`}>
-                                <div className={`w-16 h-16 rounded-2xl flex items-center justify-center ${opt.value === 'ai' ? 'bg-purple-500/10 text-purple-400' : 'bg-blue-500/10 text-blue-400'}`}>
+                                <div className={`w-16 h-16 rounded-2xl flex items-center justify-center ${opt.value === 'ai' ? 'bg-brand-accent/10 text-brand-accent' : 'bg-brand-accent/10 text-brand-accent'}`}>
                                     {opt.icon}
                                 </div>
                                 <div>
@@ -296,7 +296,7 @@ const QuizBuilder = () => {
                                 className={`p-4 rounded-2xl border-2 text-left transition-all flex flex-col gap-2
                                     ${quizType === opt.value ? 'border-primary bg-primary/10' : 'border-border bg-surface hover:border-primary/50'}`}>
                                 <div className={`w-11 h-11 rounded-xl flex items-center justify-center
-                                    ${opt.color === 'blue' ? 'bg-blue-500/10 text-blue-400' : opt.color === 'green' ? 'bg-green-500/10 text-green-400' : opt.color === 'orange' ? 'bg-orange-500/10 text-orange-400' : 'bg-purple-500/10 text-purple-400'}`}>
+                                    ${opt.color === 'blue' ? 'bg-brand-accent/10 text-brand-accent' : opt.color === 'green' ? 'bg-green-500/10 text-green-400' : opt.color === 'orange' ? 'bg-orange-500/10 text-orange-400' : 'bg-brand-accent/10 text-brand-accent'}`}>
                                     {opt.icon}
                                 </div>
                                 <p className="font-bold text-sm">{opt.label}</p>
@@ -395,13 +395,13 @@ const QuizBuilder = () => {
                     {method === 'ai' ? (
                         <div className="space-y-4">
                             <div className="bg-surface p-5 rounded-2xl border border-border space-y-3">
-                                <label className="block text-sm font-bold text-secondary-foreground flex items-center gap-2"><Wand2 className="w-4 h-4 text-purple-400" /> Paste Source Material for AI</label>
+                                <label className="block text-sm font-bold text-secondary-foreground flex items-center gap-2"><Wand2 className="w-4 h-4 text-brand-accent" /> Paste Source Material for AI</label>
                                 <textarea value={aiMaterial} onChange={e => setAiMaterial(e.target.value)}
                                     placeholder="Paste your topic, notes, textbook excerpt, or article..."
                                     rows={6} className="w-full bg-background border border-border rounded-xl p-3 resize-none focus:border-primary outline-none text-sm" />
                             </div>
                             <button onClick={handleGenerateAI} disabled={generatingAI}
-                                className="w-full bg-purple-600 text-white py-3.5 rounded-xl font-bold hover:bg-purple-500 flex items-center justify-center gap-2 disabled:opacity-50">
+                                className="w-full bg-brand-muted text-white py-3.5 rounded-xl font-bold hover:bg-brand-accent flex items-center justify-center gap-2 disabled:opacity-50">
                                 {generatingAI ? 'Generating...' : <><Wand2 className="w-5 h-5" /> Generate Questions with AI</>}
                             </button>
                         </div>
@@ -441,7 +441,7 @@ const QuizBuilder = () => {
 
                     {questions.map((q, qIdx) => (
                         <div key={q.id} className="bg-surface rounded-2xl border border-border overflow-hidden">
-                            <div className={`h-1 w-full ${q.type === 'MCQ' ? 'bg-blue-500' : q.type === 'SHORT' ? 'bg-green-500' : 'bg-orange-500'}`} />
+                            <div className={`h-1 w-full ${q.type === 'MCQ' ? 'bg-brand-accent' : q.type === 'SHORT' ? 'bg-green-500' : 'bg-orange-500'}`} />
                             <div className="p-5">
                                 <div className="flex justify-between items-start mb-3">
                                     <div className="flex items-center gap-2">

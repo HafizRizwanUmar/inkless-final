@@ -28,9 +28,9 @@ const AdminDashboard = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <StatCard icon={Users} label="Total Users" value="1,240" color="bg-blue-500" />
+                <StatCard icon={Users} label="Total Users" value="1,240" color="bg-brand-accent" />
                 <StatCard icon={Server} label="System Uptime" value="99.9%" color="bg-green-500" />
-                <StatCard icon={Shield} label="Active Roles" value="4" color="bg-purple-500" />
+                <StatCard icon={Shield} label="Active Roles" value="4" color="bg-brand-accent" />
                 <StatCard icon={Activity} label="Pending Approvals" value="5" color="bg-red-500" />
             </div>
 

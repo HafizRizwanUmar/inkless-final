@@ -21,8 +21,8 @@ const AssignmentSubmission = () => {
                     <h4 className="font-bold text-secondary-foreground uppercase text-xs tracking-wider">Uploaded Files</h4>
                     <div className="flex items-center justify-between p-4 bg-background rounded-lg border border-border">
                         <div className="flex items-center gap-4">
-                            <div className="p-2 bg-blue-500/20 rounded">
-                                <File className="w-6 h-6 text-blue-400" />
+                            <div className="p-2 bg-brand-accent/20 rounded">
+                                <File className="w-6 h-6 text-brand-accent" />
                             </div>
                             <div>
                                 <p className="font-medium text-sm">Neural_Net_Implementation.pdf</p>

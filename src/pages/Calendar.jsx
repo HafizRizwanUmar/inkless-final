@@ -52,7 +52,7 @@ const Calendar = () => {
         <div className="max-w-5xl mx-auto space-y-8 pb-12">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">Task Timeline</h1>
+                    <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-brand-muted">Task Timeline</h1>
                     <p className="text-secondary-foreground">Manage your workflow and deadlines.</p>
                 </div>
                 <div className="flex gap-2 bg-surface p-1 rounded-lg border border-border">
@@ -98,7 +98,7 @@ const Calendar = () => {
                                     <div className="bg-surface p-5 rounded-xl border border-border shadow-sm group-hover:border-primary/50 group-hover:shadow-md transition-all">
                                         <div className="flex justify-between items-start mb-2">
                                             <div>
-                                                <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border ${task.type === 'Lab' ? 'bg-blue-500/10 text-blue-600 border-blue-500/20' : 'bg-purple-500/10 text-purple-600 border-purple-500/20'}`}>
+                                                <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border ${task.type === 'Lab' ? 'bg-brand-accent/10 text-brand-muted border-brand-accent/20' : 'bg-brand-accent/10 text-brand-muted border-brand-accent/20'}`}>
                                                     {task.type}
                                                 </span>
                                                 <h3 className="font-bold text-lg mt-2 group-hover:text-primary transition-colors">{task.title}</h3>

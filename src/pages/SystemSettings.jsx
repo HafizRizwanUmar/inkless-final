@@ -9,7 +9,7 @@ const SystemSettings = () => {
             <div className="space-y-6">
                 <div className="bg-surface rounded-xl border border-border p-6">
                     <h3 className="flex items-center gap-2 font-bold mb-6 text-lg">
-                        <Globe className="w-5 h-5 text-blue-400" />
+                        <Globe className="w-5 h-5 text-brand-accent" />
                         General Settings
                     </h3>
                     <div className="space-y-4">

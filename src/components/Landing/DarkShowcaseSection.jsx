@@ -30,18 +30,17 @@ const DarkShowcaseSection = () => {
     return (
         <section id="showcase" ref={containerRef} className="relative w-full py-32 bg-black text-white overflow-hidden">
             {/* Background Gradients */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-purple-900/20 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-brand-dark/20 rounded-full blur-[120px] pointer-events-none" />
 
             <div className="container mx-auto px-6 relative z-10">
                 <div className="text-center max-w-3xl mx-auto mb-20">
-                    <p className="text-gray-400 font-medium tracking-wide text-sm mb-4 uppercase">Features</p>
+                    <p className="text-brand-accent font-semibold tracking-wide text-sm mb-4 uppercase">Why Inkless</p>
                     <h2 className="text-4xl md:text-5xl font-sans font-bold tracking-tight mb-6">
-                        Effortless Academic Intelligence, <br />
-                        <span className="text-gray-500">Right At Your Fingertips.</span>
+                        Everything You Need <br />
+                        <span className="text-gray-400">To Run Your Classroom.</span>
                     </h2>
                     <p className="text-gray-400 text-lg leading-relaxed">
-                        Find out why a student is struggling without having to read twenty assignment submissions.
-                        Unlike some AI tools, we spent a lot of time making sure Inkless AI provides accurate, pedagogical insights.
+                        From managing rosters to deep AI analytics, Inkless bridges the gap between traditional learning and modern technology.
                     </p>
                 </div>
 
@@ -57,7 +56,7 @@ const DarkShowcaseSection = () => {
                             </h3>
                         </div>
                         <div className="flex items-center gap-3 mb-6">
-                            <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
+                            <div className="w-10 h-10 rounded-full bg-brand-accent/20 flex items-center justify-center text-brand-accent">
                                 <TrendingUp size={20} />
                             </div>
                             <div>
@@ -66,11 +65,11 @@ const DarkShowcaseSection = () => {
                             </div>
                         </div>
                         {/* Visual Representation */}
-                        <div className="h-48 rounded-2xl bg-gradient-to-br from-blue-900/40 to-purple-900/40 border border-white/5 relative overflow-hidden flex items-end justify-center pb-4 px-4 group-hover:scale-[1.02] transition-transform duration-500">
+                        <div className="h-48 rounded-2xl bg-gradient-to-br from-brand-dark/40 to-brand-dark/40 border border-white/5 relative overflow-hidden flex items-end justify-center pb-4 px-4 group-hover:scale-[1.02] transition-transform duration-500">
                             {/* Abstract Chart */}
                             <div className="w-full flex items-end gap-2 h-32">
                                 {[30, 45, 40, 60, 55, 70, 85].map((h, i) => (
-                                    <div key={i} className="flex-1 bg-blue-500/50 rounded-t-sm" style={{ height: `${h}%` }} />
+                                    <div key={i} className="flex-1 bg-brand-accent/50 rounded-t-sm" style={{ height: `${h}%` }} />
                                 ))}
                             </div>
                         </div>

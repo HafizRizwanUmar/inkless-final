@@ -9,8 +9,8 @@ const QuizSettings = () => {
             <div className="bg-surface rounded-xl border border-border p-8 space-y-8">
                 {/* Timer Settings */}
                 <div className="flex items-start gap-4">
-                    <div className="p-2 bg-blue-500/20 rounded-lg">
-                        <Clock className="w-6 h-6 text-blue-400" />
+                    <div className="p-2 bg-brand-accent/20 rounded-lg">
+                        <Clock className="w-6 h-6 text-brand-accent" />
                     </div>
                     <div className="flex-1">
                         <h3 className="text-lg font-bold mb-1">Time Limit</h3>
@@ -46,8 +46,8 @@ const QuizSettings = () => {
 
                 {/* Randomization */}
                 <div className="flex items-start gap-4">
-                    <div className="p-2 bg-purple-500/20 rounded-lg">
-                        <Shuffle className="w-6 h-6 text-purple-400" />
+                    <div className="p-2 bg-brand-accent/20 rounded-lg">
+                        <Shuffle className="w-6 h-6 text-brand-accent" />
                     </div>
                     <div className="flex-1">
                         <div className="flex justify-between items-center">

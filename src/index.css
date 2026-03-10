@@ -6,6 +6,13 @@
   --font-serif: 'Playfair Display', serif;
   --font-poppins: 'Poppins', sans-serif;
 
+  /* Custom Brand Colors */
+  --color-brand-dark: #472825;
+  --color-brand-muted: #96786F;
+  --color-brand-accent: #D3AB80;
+  --color-brand-light: #FDE4BC;
+  --color-brand-cream: #FFF4E2;
+
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
@@ -92,48 +99,52 @@
 
 /* Base Theme */
 :root {
-  --background: 0 0% 100%;
-  --foreground: 222 47% 11%;
+  --background: 37 100% 94%;
+  /* brand-cream */
+  --foreground: 9 31% 21%;
+  /* brand-dark */
 
   --card: 0 0% 100%;
-  --card-foreground: 222 47% 11%;
+  --card-foreground: 9 31% 21%;
 
   --popover: 0 0% 100%;
-  --popover-foreground: 222 47% 11%;
+  --popover-foreground: 9 31% 21%;
 
-  --primary: 262 83% 58%;
-  /* Purple */
-  --primary-foreground: 210 40% 98%;
+  --primary: 9 31% 21%;
+  /* brand-dark */
+  --primary-foreground: 37 100% 94%;
+  /* brand-cream */
 
-  --secondary: 210 40% 96.1%;
-  --secondary-foreground: 222 47% 11.2%;
+  --secondary: 31 49% 66%;
+  /* brand-accent */
+  --secondary-foreground: 9 31% 21%;
 
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
+  --muted: 14 16% 51%;
+  /* brand-muted */
+  --muted-foreground: 37 100% 94%;
 
-  --accent: 210 40% 96.1%;
-  --accent-foreground: 222 47% 11.2%;
+  --accent: 37 94% 86%;
+  /* brand-light */
+  --accent-foreground: 9 31% 21%;
 
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 210 40% 98%;
 
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --ring: 262 83% 58%;
+  --border: 31 49% 66%;
+  /* brand-accent but lighter visually when applied with low opacity */
+  --input: 14 16% 51%;
+  --ring: 9 31% 21%;
 
   --radius: 0.5rem;
 }
 
 /* Landing Page Specific Variables (Dark/Morpher Theme) */
 :root {
-  --landing-bg-dark: 260 20% 10%;
-  /* Deep Dark Purple/Black */
-  --landing-card-bg: 260 20% 15%;
-  /* Lighter Dark */
-  --landing-primary: 265 90% 65%;
-  /* Vibrant Purple */
-  --landing-text-main: 0 0% 100%;
-  --landing-text-muted: 260 10% 70%;
+  --landing-bg-dark: 9 31% 21%;
+  --landing-card-bg: 9 31% 25%;
+  --landing-primary: 31 49% 66%;
+  --landing-text-main: 37 100% 94%;
+  --landing-text-muted: 37 94% 86%;
 }
 
 @layer base {

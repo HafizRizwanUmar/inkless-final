@@ -46,7 +46,7 @@ const ArchivedClasses = () => {
         <div className="max-w-5xl mx-auto space-y-8 pb-12">
             <div className="flex justify-between items-center">
                 <div>
-                    <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">Archived Classes</h1>
+                    <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-brand-muted">Archived Classes</h1>
                     <p className="text-secondary-foreground">Past classes that are no longer active.</p>
                 </div>
             </div>
@@ -62,7 +62,7 @@ const ArchivedClasses = () => {
                     {classes.map(cls => (
                         <div key={cls._id} className="bg-surface border border-border rounded-xl p-6 hover:shadow-lg transition-all flex flex-col justify-between h-full opacity-80">
                             <div>
-                                <div className={`w-12 h-12 rounded-lg ${cls.theme || 'bg-blue-600'} text-white flex items-center justify-center mb-4`}>
+                                <div className={`w-12 h-12 rounded-lg ${cls.theme || 'bg-brand-muted'} text-white flex items-center justify-center mb-4`}>
                                     <BookOpen className="w-6 h-6" />
                                 </div>
                                 <h3 className="font-bold text-lg mb-1">{cls.title}</h3>

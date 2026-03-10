@@ -20,7 +20,6 @@ const LandingNavbar = () => {
         { name: 'Home', href: '#hero' },
         { name: 'Features', href: '#features' },
         { name: 'Insights', href: '#showcase' },
-        { name: 'App', href: '#mobile-app' },
     ];
 
     const handleScrollTo = (e, href) => {

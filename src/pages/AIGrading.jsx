@@ -22,19 +22,19 @@ const AIGrading = () => {
 
             {/* AI Analysis Panel */}
             <div className="flex flex-col space-y-6">
-                <div className="bg-purple-900/10 border border-purple-500/30 p-6 rounded-xl relative overflow-hidden">
+                <div className="bg-brand-dark/10 border border-brand-accent/30 p-6 rounded-xl relative overflow-hidden">
                     {/* Confidence Meter */}
                     <div className="flex justify-between items-start mb-4 relative z-10">
                         <div className="flex items-center gap-3">
-                            <div className="p-2 bg-purple-500 rounded-lg">
+                            <div className="p-2 bg-brand-accent rounded-lg">
                                 <Sparkles className="w-6 h-6 text-white" />
                             </div>
                             <div>
                                 <h3 className="text-xl font-bold text-white">Inkless AI Analysis</h3>
-                                <div className="flex items-center gap-2 text-sm text-purple-300">
+                                <div className="flex items-center gap-2 text-sm text-brand-light">
                                     <span>Confidence Score:</span>
-                                    <div className="w-24 h-2 bg-purple-900 rounded-full">
-                                        <div className="w-[92%] h-full bg-purple-400 rounded-full"></div>
+                                    <div className="w-24 h-2 bg-brand-dark rounded-full">
+                                        <div className="w-[92%] h-full bg-brand-accent rounded-full"></div>
                                     </div>
                                     <span>92%</span>
                                 </div>
@@ -58,8 +58,8 @@ const AIGrading = () => {
                             <h4 className="font-bold text-yellow-400 text-sm mb-1">Implementation Logic</h4>
                             <p className="text-sm text-secondary-foreground">Forward pass logic is correct, but backpropagation explanation lacks depth on gradient descent.</p>
                         </div>
-                        <div className="bg-background p-4 rounded-lg border-l-4 border-blue-500 flex items-start gap-3">
-                            <MessageSquare className="w-4 h-4 text-blue-400 mt-1" />
+                        <div className="bg-background p-4 rounded-lg border-l-4 border-brand-accent flex items-start gap-3">
+                            <MessageSquare className="w-4 h-4 text-brand-accent mt-1" />
                             <div>
                                 <p className="text-sm text-white">"Consider adding a section on activation functions derivative."</p>
                                 <p className="text-xs text-secondary-foreground mt-1">Suggested Comment to Student</p>

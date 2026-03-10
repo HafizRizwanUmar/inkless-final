@@ -15,7 +15,7 @@ const Notifications = () => {
 
     const getIcon = (type) => {
         switch (type) {
-            case 'Assignment': return <FileText className="w-5 h-5 text-blue-400" />;
+            case 'Assignment': return <FileText className="w-5 h-5 text-brand-accent" />;
             case 'Quiz': return <CheckCircle className="w-5 h-5 text-green-400" />;
             case 'System': return <Info className="w-5 h-5 text-yellow-400" />;
             default: return <Bell className="w-5 h-5 text-gray-400" />;

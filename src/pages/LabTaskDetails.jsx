@@ -587,7 +587,7 @@ const LabTaskDetails = () => {
                 )}
 
                 {isTeacher && (
-                    <div className="bg-blue-500/10 border border-blue-500/20 p-6 rounded-2xl text-blue-700 text-center">
+                    <div className="bg-brand-accent/10 border border-brand-accent/20 p-6 rounded-2xl text-brand-muted text-center">
                         <h3 className="font-bold mb-2">Teacher Preview Mode</h3>
                         <p>This is what students see. Head to "View Subs" to grade.</p>
                     </div>

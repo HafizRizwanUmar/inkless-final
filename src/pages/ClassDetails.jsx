@@ -100,10 +100,10 @@ const ClassDetails = () => {
                         >
                             {classData.title}
                         </motion.h1>
-                        <p className="text-blue-100 text-lg md:text-xl font-medium flex items-center gap-2 drop-shadow-sm">
-                            {classData.subject} <span className="text-blue-300">•</span> {classData.section}
+                        <p className="text-brand-cream text-lg md:text-xl font-medium flex items-center gap-2 drop-shadow-sm">
+                            {classData.subject} <span className="text-brand-light">•</span> {classData.section}
                         </p>
-                        <p className="text-blue-200 text-sm mt-1 font-mono uppercase tracking-wider opacity-90">Room: {classData.room} | Code: {classData.code}</p>
+                        <p className="text-brand-light text-sm mt-1 font-mono uppercase tracking-wider opacity-90">Room: {classData.room} | Code: {classData.code}</p>
                     </div>
 
                     <div className="flex gap-2 mb-auto md:mb-0">
@@ -167,7 +167,7 @@ const ClassDetails = () => {
                                         <h3 className="text-lg font-bold mb-4">Quick Stats</h3>
                                         <div className="flex items-center justify-between p-4 bg-background rounded-xl border border-border">
                                             <div className="flex items-center gap-3">
-                                                <div className="p-2 bg-blue-100 text-blue-600 rounded-lg"><Users size={20} /></div>
+                                                <div className="p-2 bg-brand-cream text-brand-muted rounded-lg"><Users size={20} /></div>
                                                 <span className="font-medium">Students</span>
                                             </div>
                                             <span className="text-xl font-bold">{classData.students?.length || 0}</span>
@@ -292,7 +292,7 @@ const ClassDetails = () => {
                                             return (
                                                 <div key={quiz._id} className="group bg-surface rounded-2xl border border-border hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all overflow-hidden flex flex-col">
                                                     {/* Colored Top Bar */}
-                                                    <div className={`h-1.5 w-full ${isExpired ? 'bg-red-500' : isNotStarted ? 'bg-orange-500' : 'bg-gradient-to-r from-primary to-purple-500'}`} />
+                                                    <div className={`h-1.5 w-full ${isExpired ? 'bg-red-500' : isNotStarted ? 'bg-orange-500' : 'bg-gradient-to-r from-primary to-brand-accent'}`} />
 
                                                     <div className="p-6 flex flex-col flex-1">
                                                         {/* Header row */}
@@ -407,7 +407,7 @@ const ClassDetails = () => {
                                         {isTeacher ? (
                                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
                                                 <div className="bg-surface p-6 rounded-2xl border border-border flex flex-col items-center justify-center text-center shadow-sm hover:border-primary/50 transition-colors">
-                                                    <div className="w-12 h-12 bg-blue-500/10 text-blue-500 rounded-full flex items-center justify-center mb-4">
+                                                    <div className="w-12 h-12 bg-brand-accent/10 text-brand-accent rounded-full flex items-center justify-center mb-4">
                                                         <Users size={24} />
                                                     </div>
                                                     <h4 className="text-3xl font-bold text-foreground mb-1">{analyticsData.totalStudents}</h4>
@@ -421,7 +421,7 @@ const ClassDetails = () => {
                                                     <p className="text-sm font-medium text-secondary-foreground">Assignments</p>
                                                 </div>
                                                 <div className="bg-surface p-6 rounded-2xl border border-border flex flex-col items-center justify-center text-center shadow-sm hover:border-primary/50 transition-colors">
-                                                    <div className="w-12 h-12 bg-purple-500/10 text-purple-500 rounded-full flex items-center justify-center mb-4">
+                                                    <div className="w-12 h-12 bg-brand-accent/10 text-brand-accent rounded-full flex items-center justify-center mb-4">
                                                         <PenTool size={24} />
                                                     </div>
                                                     <h4 className="text-3xl font-bold text-foreground mb-1">{analyticsData.quizzes}</h4>
@@ -454,7 +454,7 @@ const ClassDetails = () => {
                                                                         <span className="font-bold">{myStats.completedAssignments} / {analyticsData.assignments}</span>
                                                                     </div>
                                                                     <div className="w-full bg-background rounded-full h-2">
-                                                                        <div className="bg-blue-500 h-2 rounded-full" style={{ width: `${analyticsData.assignments > 0 ? (myStats.completedAssignments / analyticsData.assignments) * 100 : 0}%` }}></div>
+                                                                        <div className="bg-brand-accent h-2 rounded-full" style={{ width: `${analyticsData.assignments > 0 ? (myStats.completedAssignments / analyticsData.assignments) * 100 : 0}%` }}></div>
                                                                     </div>
                                                                 </div>
 
@@ -464,7 +464,7 @@ const ClassDetails = () => {
                                                                         <span className="font-bold">{myStats.completedQuizzes} / {analyticsData.quizzes}</span>
                                                                     </div>
                                                                     <div className="w-full bg-background rounded-full h-2">
-                                                                        <div className="bg-purple-500 h-2 rounded-full" style={{ width: `${analyticsData.quizzes > 0 ? (myStats.completedQuizzes / analyticsData.quizzes) * 100 : 0}%` }}></div>
+                                                                        <div className="bg-brand-accent h-2 rounded-full" style={{ width: `${analyticsData.quizzes > 0 ? (myStats.completedQuizzes / analyticsData.quizzes) * 100 : 0}%` }}></div>
                                                                     </div>
                                                                 </div>
 
@@ -480,12 +480,12 @@ const ClassDetails = () => {
                                                             </div>
                                                         </div>
 
-                                                        <div className="bg-gradient-to-br from-primary/10 to-purple-500/10 p-8 rounded-2xl border border-primary/20 shadow-sm flex flex-col items-center justify-center text-center relative overflow-hidden">
+                                                        <div className="bg-gradient-to-br from-primary/10 to-brand-accent/10 p-8 rounded-2xl border border-primary/20 shadow-sm flex flex-col items-center justify-center text-center relative overflow-hidden">
                                                             <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
-                                                            <div className="absolute -left-10 -top-10 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl"></div>
+                                                            <div className="absolute -left-10 -top-10 w-40 h-40 bg-brand-accent/10 rounded-full blur-3xl"></div>
 
                                                             <span className="px-3 py-1 bg-background rounded-full text-xs font-bold uppercase tracking-wider text-secondary-foreground mb-6 shadow-sm">Total Points Earned</span>
-                                                            <h2 className="text-6xl font-black bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600 mb-2 drop-shadow-sm">{totalEarned}</h2>
+                                                            <h2 className="text-6xl font-black bg-clip-text text-transparent bg-gradient-to-r from-primary to-brand-muted mb-2 drop-shadow-sm">{totalEarned}</h2>
                                                             <p className="text-secondary-foreground font-medium mt-4">Keep up the great work, {currentUser.name}!</p>
                                                         </div>
                                                     </div>
@@ -526,12 +526,12 @@ const ClassDetails = () => {
                                                                             </div>
                                                                         </td>
                                                                         <td className="px-6 py-4 text-center">
-                                                                            <div className="inline-flex items-center gap-1.5 bg-blue-500/10 text-blue-500 px-2 py-1 rounded font-mono text-sm">
+                                                                            <div className="inline-flex items-center gap-1.5 bg-brand-accent/10 text-brand-accent px-2 py-1 rounded font-mono text-sm">
                                                                                 {stat.completedAssignments} <span className="text-xs opacity-60">/ {analyticsData.assignments}</span>
                                                                             </div>
                                                                         </td>
                                                                         <td className="px-6 py-4 text-center">
-                                                                            <div className="inline-flex items-center gap-1.5 bg-purple-500/10 text-purple-500 px-2 py-1 rounded font-mono text-sm">
+                                                                            <div className="inline-flex items-center gap-1.5 bg-brand-accent/10 text-brand-accent px-2 py-1 rounded font-mono text-sm">
                                                                                 {stat.completedQuizzes} <span className="text-xs opacity-60">/ {analyticsData.quizzes}</span>
                                                                             </div>
                                                                         </td>

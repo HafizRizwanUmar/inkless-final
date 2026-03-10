@@ -47,34 +47,34 @@ const FeaturesSection = () => {
     const features = [
         {
             icon: <Clock size={28} className="text-gray-800" />,
-            title: "Timely Grading Insights",
-            description: "Inkless AI is your personal teaching assistant. Get current performance analytics on any student or class immediately (instead of waiting for end-of-term reports)."
+            title: "Course Management",
+            description: "Easily organize classes, assignments, and schedules. Inkless provides an intuitive space for teachers and students to interact seamlessly."
         },
         {
             icon: <Search size={28} className="text-gray-800" />,
-            title: "Discover Learning Gaps",
-            description: "See the big trends today, and find out what caused a drop in performance. It's the best way to find your new focus area with the full analysis already done."
+            title: "AI-Powered Grading",
+            description: "Save hours of manual marking. Our advanced AI evaluates submissions with precision, providing constructive feedback tailored to your rubrics."
         },
         {
             icon: <ShieldCheck size={28} className="text-gray-800" />,
-            title: "AI That You Can Rely On",
-            description: "Smart filters, quality curriculum alignment, and advanced prompt engineering means our AI avoids hallucinations. When it doesn't know why something happened - it will tell you."
+            title: "Actionable Analytics",
+            description: "Track student progress comprehensively. Identify learning gaps early and optimize your teaching strategies with data-driven insights."
         }
     ];
 
     return (
-        <section id="features" ref={containerRef} className="relative w-full py-24 bg-gradient-to-b from-white to-purple-50/50">
+        <section id="features" ref={containerRef} className="relative w-full py-24 bg-gradient-to-b from-white to-brand-cream/50">
             <div className="container mx-auto px-6">
                 <div className="feature-header mb-20 grid lg:grid-cols-2 gap-12 items-center">
                     <div>
-                        <h2 className="text-4xl md:text-5xl font-sans font-medium tracking-tight text-gray-900 leading-tight mb-6">
-                            Navigate the learning process <br />
-                            <span className="text-gray-400">with Confidence</span>
+                        <h2 className="text-4xl md:text-5xl font-sans font-bold tracking-tight text-gray-900 leading-tight mb-6">
+                            Enhance Learning <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-muted to-brand-muted">Every Step of the Way</span>
                         </h2>
                     </div>
                     <div className="lg:pl-10">
                         <p className="text-lg text-gray-600 leading-relaxed max-w-md">
-                            Navigate the academic year with confidence using AI-powered insights that simplify complex data into clear, actionable teaching strategies.
+                            A complete learning management system designed to simplify administration, amplify teaching impact, and boost student engagement.
                         </p>
                     </div>
                 </div>

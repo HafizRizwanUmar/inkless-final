@@ -76,7 +76,7 @@ const UserManagement = () => {
                                 </td>
                                 <td className="px-6 py-4">
                                     <div className="flex items-center gap-2">
-                                        {user.role === 'Admin' ? <Shield className="w-4 h-4 text-purple-500" /> : <User className="w-4 h-4 text-blue-500" />}
+                                        {user.role === 'Admin' ? <Shield className="w-4 h-4 text-brand-accent" /> : <User className="w-4 h-4 text-brand-accent" />}
                                         <span>{user.role}</span>
                                     </div>
                                 </td>
