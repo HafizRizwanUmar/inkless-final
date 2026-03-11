@@ -12,9 +12,12 @@ const ClassDetails = () => {
     const navigate = useNavigate();
     const { classId } = useParams();
 
-    // If no classId, redirect back
+    // Redirect if no classId found in URL
     useEffect(() => {
-        if (!classId) navigate('/teacher/dashboard');
+        if (!classId) {
+            console.error("No classId provided in URL params");
+            navigate('/');
+        }
     }, [classId, navigate]);
 
     const [activeTab, setActiveTab] = useState('Overview');
@@ -37,18 +40,41 @@ const ClassDetails = () => {
         const fetchClassData = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const res = await axios.get(`${API_BASE_URL}/api/classes/${classId}`, { headers: { 'x-auth-token': token } });
+                if (!token) {
+                    console.error("No token found");
+                    return;
+                }
+
+                const res = await axios.get(`${API_BASE_URL}/api/classes/${classId}`, {
+                    headers: { 'x-auth-token': token }
+                });
+
+                if (!res.data) {
+                    throw new Error("Class not found");
+                }
+
                 setClassData(res.data);
 
-                // Decode token
-                const base64Url = token.split('.')[1];
-                const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-                const jsonPayload = decodeURIComponent(window.atob(base64).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
-                setCurrentUser(JSON.parse(jsonPayload).user);
-            } catch (err) { console.error(err); }
+                // Decode token safely
+                try {
+                    const base64Url = token.split('.')[1];
+                    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                    const jsonPayload = decodeURIComponent(window.atob(base64).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+                    const decoded = JSON.parse(jsonPayload);
+                    setCurrentUser(decoded.user);
+                } catch (decodeErr) {
+                    console.error("Error decoding token:", decodeErr);
+                }
+            } catch (err) {
+                console.error("Error fetching class data:", err);
+                if (err.response?.status === 404) {
+                    alert("Class not found.");
+                    navigate(-1);
+                }
+            }
         };
         if (classId) fetchClassData();
-    }, [classId]);
+    }, [classId, navigate]);
 
     const [analyticsData, setAnalyticsData] = useState(null);
 
@@ -66,7 +92,10 @@ const ClassDetails = () => {
 
     if (!classData || !currentUser) return <div className="flex h-screen items-center justify-center text-secondary-foreground">Loading...</div>;
 
-    const isTeacher = classData.owner === currentUser.id || classData.teachers.includes(currentUser.id);
+    const isTeacher = classData && currentUser && (
+        (typeof classData.owner === 'object' ? classData.owner._id === currentUser.id : classData.owner === currentUser.id) ||
+        (classData.teachers && classData.teachers.some(t => typeof t === 'object' ? t._id === currentUser.id : t === currentUser.id))
+    );
 
     const handleArchive = async () => {
         const confirm = window.confirm("Are you sure you want to archive this class?");
@@ -192,7 +221,7 @@ const ClassDetails = () => {
                                     </div>
                                     {isTeacher && (
                                         <button
-                                            onClick={() => navigate('/create-lab-task', { state: { classId } })}
+                                            onClick={() => navigate(`/create-lab-task/${classId}`)}
                                             className="w-full sm:w-auto bg-primary text-white px-5 py-2.5 rounded-xl font-bold hover:bg-primary/90 shadow-lg shadow-primary/20 flex items-center justify-center gap-2 transition-transform active:scale-95"
                                         >
                                             <Plus className="w-5 h-5" /> New Lab
@@ -206,7 +235,7 @@ const ClassDetails = () => {
                                     ) : (
                                         labTasks.map(lab => (
                                             <div key={lab._id} className="group bg-surface p-6 rounded-2xl border border-border hover:border-primary/50 hover:shadow-md transition-all cursor-pointer relative overflow-hidden"
-                                                onClick={() => navigate('/lab-task-details', { state: { labId: lab._id } })}>
+                                                onClick={() => navigate(`/lab-task-details/${lab._id}`)}>
                                                 <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
                                                     <ChevronRight className="text-primary w-6 h-6" />
                                                 </div>
@@ -240,7 +269,7 @@ const ClassDetails = () => {
                                     </div>
                                     {isTeacher && (
                                         <button
-                                            onClick={() => navigate('/create-assignment', { state: { classId } })}
+                                            onClick={() => navigate(`/create-assignment/${classId}`)}
                                             className="w-full sm:w-auto bg-primary text-white px-5 py-2.5 rounded-xl font-bold hover:bg-primary/90 shadow-lg shadow-primary/20 flex items-center justify-center gap-2 transition-transform active:scale-95"
                                         >
                                             <Plus className="w-5 h-5" /> New Assignment
@@ -252,7 +281,7 @@ const ClassDetails = () => {
                                         <EmptyState icon={FileText} text="No assignments yet." />
                                     ) : (
                                         assignments.map(assign => (
-                                            <div key={assign._id} onClick={() => navigate('/assignment-details', { state: { assignmentId: assign._id } })}
+                                            <div key={assign._id} onClick={() => navigate(`/assignment-details/${assign._id}`)}
                                                 className="bg-surface p-6 rounded-2xl border border-border hover:border-primary/50 hover:shadow-md transition-all cursor-pointer flex justify-between items-center group">
                                                 <div>
                                                     <h4 className="text-lg font-bold group-hover:text-primary transition-colors">{assign.title}</h4>
@@ -345,7 +374,7 @@ const ClassDetails = () => {
                                                                 </div>
                                                             ) : (
                                                                 <button
-                                                                    onClick={() => navigate('/quiz-attempt', { state: { quizId: quiz._id } })}
+                                                                    onClick={() => navigate(`/quiz-attempt/${quiz._id}`)}
                                                                     className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20"
                                                                 >
                                                                     <PlayCircle className="w-4 h-4" /> Attempt Quiz

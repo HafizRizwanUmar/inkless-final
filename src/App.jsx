@@ -100,21 +100,21 @@ function App() {
           <Route path="/student-profile-view" element={<StudentProfileView />} />
 
           {/* Module D: Assignment */}
-          <Route path="/create-assignment" element={<CreateAssignment />} />
-          <Route path="/assignment-details" element={<AssignmentDetails />} />
+          <Route path="/create-assignment/:classId" element={<CreateAssignment />} />
+          <Route path="/assignment-details/:assignmentId" element={<AssignmentDetails />} />
           {/* <Route path="/assignment-submission" element={<AssignmentSubmission />} /> */}
-          <Route path="/submissions" element={<Submissions />} />
+          <Route path="/submissions/:assignmentId" element={<Submissions />} />
           <Route path="/submission-list" element={<SubmissionList />} />
           {/* <Route path="/ai-grading" element={<AIGrading />} /> */}
-          <Route path="/grading" element={<GradingPage />} />
+          <Route path="/grading/:submissionId" element={<GradingPage />} />
           {/* <Route path="/manual-marking" element={<ManualMarking />} /> */}
           <Route path="/download-reports" element={<DownloadReports />} />
 
           {/* Module D+: Lab Tasks */}
-          <Route path="/create-lab-task" element={<CreateLabTask />} />
-          <Route path="/lab-task-details" element={<LabTaskDetails />} />
-          <Route path="/lab-submissions" element={<LabSubmissions />} />
-          <Route path="/lab-grading" element={<LabGradingPage />} />
+          <Route path="/create-lab-task/:classId" element={<CreateLabTask />} />
+          <Route path="/lab-task-details/:labId" element={<LabTaskDetails />} />
+          <Route path="/lab-submissions/:labId" element={<LabSubmissions />} />
+          <Route path="/lab-grading/:submissionId" element={<LabGradingPage />} />
 
           {/* Module E: AI & Plagiarism */}
           <Route path="/ai-confidence" element={<AIConfidence />} />

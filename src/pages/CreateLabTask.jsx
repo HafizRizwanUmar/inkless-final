@@ -1,13 +1,13 @@
 import API_BASE_URL from '../config';
 import React, { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { ArrowLeft, Plus, Trash2, Upload } from 'lucide-react';
 
 const CreateLabTask = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { classId } = location.state || {};
+    const { classId } = useParams();
 
     const [formData, setFormData] = useState({
         title: '',

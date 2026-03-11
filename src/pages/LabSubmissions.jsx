@@ -1,13 +1,13 @@
 import API_BASE_URL from '../config';
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { ArrowLeft, User, CheckCircle, Clock } from 'lucide-react';
 
 const LabSubmissions = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { labId } = location.state || {};
+    const { labId } = useParams();
     const [submissions, setSubmissions] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -77,7 +77,7 @@ const LabSubmissions = () => {
                                     <td className="p-4 font-mono font-medium text-primary">{sub.obtainedMarks ?? '-'}</td>
                                     <td className="p-4 text-right">
                                         <button
-                                            onClick={() => navigate('/lab-grading', { state: { submissionId: sub._id } })}
+                                            onClick={() => navigate(`/lab-grading/${sub._id}`)}
                                             className="text-primary font-medium hover:underline text-sm"
                                         >
                                             Grade

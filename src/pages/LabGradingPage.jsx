@@ -1,6 +1,6 @@
 import API_BASE_URL from '../config';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import JSZip from 'jszip';
 import { ArrowLeft, Save, Maximize2, Layout, CheckSquare, MessageSquare, FileText, Archive, Pen, CheckCircle, XCircle, Minus, Type, Eraser, Trash2, Undo2 } from 'lucide-react';
@@ -99,7 +99,7 @@ const AnnotationCanvas = ({ width, height, annotations, onAnnotationsChange, too
 const LabGradingPage = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { submissionId } = location.state || {};
+    const { submissionId } = useParams();
     const [submission, setSubmission] = useState(null);
     const [gradeData, setGradeData] = useState({ marks: '', feedback: '' });
     const [loading, setLoading] = useState(true);

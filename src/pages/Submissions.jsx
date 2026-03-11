@@ -1,13 +1,13 @@
 import API_BASE_URL from '../config';
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { ArrowLeft, User, CheckCircle, XCircle } from 'lucide-react';
 
 const Submissions = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { assignmentId } = location.state || {};
+    const { assignmentId } = useParams();
     const [submissions, setSubmissions] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -97,7 +97,7 @@ const Submissions = () => {
                                     </td>
                                     <td className="p-4 text-right">
                                         <button
-                                            onClick={() => navigate('/grading', { state: { submissionId: sub._id } })}
+                                            onClick={() => navigate(`/grading/${sub._id}`)}
                                             className="text-primary font-medium hover:underline text-sm"
                                         >
                                             Grade / View

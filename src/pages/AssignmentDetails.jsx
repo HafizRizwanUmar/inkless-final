@@ -1,6 +1,6 @@
 import API_BASE_URL from '../config';
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { ArrowLeft, Upload, FileText, CheckCircle, Clock } from 'lucide-react';
 import SEO from '../components/SEO';
@@ -8,7 +8,7 @@ import SEO from '../components/SEO';
 const AssignmentDetails = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { assignmentId } = location.state || {};
+    const { assignmentId } = useParams();
     const [assignment, setAssignment] = useState(null);
     const [submission, setSubmission] = useState(null);
     const [currentUser, setCurrentUser] = useState(null);
@@ -111,7 +111,7 @@ const AssignmentDetails = () => {
                     </div>
                     {isTeacher && (
                         <button
-                            onClick={() => navigate('/submissions', { state: { assignmentId } })}
+                            onClick={() => navigate(`/submissions/${assignmentId}`)}
                             className="bg-primary text-white px-4 py-2 rounded-lg font-bold hover:bg-primary/90"
                         >
                             View Submissions

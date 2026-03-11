@@ -1,6 +1,6 @@
 import API_BASE_URL from '../config';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { ArrowLeft, Clock, Save, FileText, Upload, CheckCircle, Code, Image as ImageIcon, Terminal, AlertCircle, Pen } from 'lucide-react';
 import SEO from '../components/SEO';
@@ -44,7 +44,7 @@ const ReadOnlyAnnotations = ({ annotations, width, height }) => {
 const LabTaskDetails = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { labId } = location.state || {};
+    const { labId } = useParams();
     const [lab, setLab] = useState(null);
     const [submission, setSubmission] = useState(null);
     const [currentUser, setCurrentUser] = useState(null);
@@ -284,7 +284,7 @@ const LabTaskDetails = () => {
                         </div>
                     </div>
                     {isTeacher && (
-                        <button onClick={() => navigate('/lab-submissions', { state: { labId } })} className="text-primary font-bold text-sm hover:underline">
+                        <button onClick={() => navigate(`/lab-submissions/${labId}`)} className="text-primary font-bold text-sm hover:underline">
                             View Subs
                         </button>
                     )}

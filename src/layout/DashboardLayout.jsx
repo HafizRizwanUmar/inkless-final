@@ -158,7 +158,7 @@ const DashboardLayout = () => {
                                 icon={BookOpen}
                                 label={cls.title}
                                 path={`/class-details/${cls._id}`}
-                                active={location.state?.classId === cls._id}
+                                active={location.pathname.includes(`/class-details/${cls._id}`)}
                                 onClick={() => {
                                     // Use navigate to set state
                                     navigate(`/class-details/${cls._id}`);
