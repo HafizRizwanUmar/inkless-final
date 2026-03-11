@@ -50,14 +50,14 @@ const CreateClass = () => {
     ];
 
     return (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[100] overflow-y-auto flex items-start justify-center p-4 sm:items-center">
             {/* Backdrop */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => navigate('/teacher/dashboard')}
-                className="absolute inset-0 bg-black/40 backdrop-blur-md"
+                className="fixed inset-0 bg-black/40 backdrop-blur-md"
             />
 
             {/* Modal */}
@@ -65,31 +65,31 @@ const CreateClass = () => {
                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl overflow-hidden border border-brand-light/20"
+                className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl overflow-hidden border border-brand-light/20 my-auto"
             >
                 {/* Close Button */}
                 <button
                     onClick={() => navigate('/teacher/dashboard')}
-                    className="absolute top-5 right-5 p-2 rounded-full hover:bg-black/5 text-secondary-foreground transition-colors z-20"
+                    className="absolute top-4 right-4 p-2 rounded-full hover:bg-black/5 text-secondary-foreground transition-colors z-20 sm:top-5 sm:right-5"
                 >
                     <X size={20} />
                 </button>
 
-                <div className="p-8">
+                <div className="p-6 sm:p-8">
                     {/* Header */}
-                    <div className="mb-8">
-                        <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mb-4">
+                    <div className="mb-6 sm:mb-8">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mb-3 sm:mb-4">
                             <Plus size={24} />
                         </div>
-                        <h2 className="text-2xl font-bold text-primary">Create New Class</h2>
-                        <p className="text-secondary-foreground text-sm mt-1">Set up your virtual classroom to start engaging with students.</p>
+                        <h2 className="text-xl sm:text-2xl font-bold text-primary">Create New Class</h2>
+                        <p className="text-secondary-foreground text-xs sm:text-sm mt-1">Set up your virtual classroom to start engaging with students.</p>
                     </div>
 
-                    <form onSubmit={handleSubmit} className="space-y-5">
-                        <div className="grid gap-5">
+                    <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+                        <div className="grid gap-4 sm:gap-5">
                             {inputFields.map((field) => (
                                 <div key={field.name} className="relative group">
-                                    <label className="block text-xs font-bold text-brand-muted uppercase tracking-wider mb-1.5 ml-1">
+                                    <label className="block text-[10px] sm:text-xs font-bold text-brand-muted uppercase tracking-wider mb-1 sm:mb-1.5 ml-1">
                                         {field.label}
                                     </label>
                                     <div className="relative">
@@ -103,7 +103,7 @@ const CreateClass = () => {
                                             value={formData[field.name]}
                                             onChange={handleChange}
                                             placeholder={field.placeholder}
-                                            className="w-full bg-brand-light/10 border-2 border-brand-light/20 rounded-2xl py-3.5 pl-12 pr-4 text-primary font-medium placeholder:text-brand-muted/50 focus:border-primary/30 focus:bg-white focus:outline-none transition-all"
+                                            className="w-full bg-brand-light/10 border-2 border-brand-light/20 rounded-xl sm:rounded-2xl py-2.5 sm:py-3.5 pl-11 sm:pl-12 pr-4 text-sm sm:text-base text-primary font-medium placeholder:text-brand-muted/50 focus:border-primary/30 focus:bg-white focus:outline-none transition-all"
                                         />
                                     </div>
                                 </div>
@@ -112,24 +112,24 @@ const CreateClass = () => {
 
                         {/* Hint */}
                         <div className="flex items-start gap-2 p-3 bg-brand-light/5 rounded-xl border border-brand-light/10">
-                            <Info size={16} className="text-brand-muted mt-0.5" />
-                            <p className="text-xs text-brand-muted leading-snug">
+                            <Info size={16} className="text-brand-muted mt-0.5 shrink-0" />
+                            <p className="text-[10px] sm:text-xs text-brand-muted leading-snug">
                                 Only the class name is required. You can edit these details later in the class settings.
                             </p>
                         </div>
 
-                        <div className="pt-6 flex gap-3">
+                        <div className="pt-4 sm:pt-6 flex gap-3">
                             <button
                                 type="button"
                                 onClick={() => navigate('/teacher/dashboard')}
-                                className="flex-1 py-4 px-6 rounded-2xl font-bold text-secondary-foreground hover:bg-black/5 border border-transparent transition-all"
+                                className="flex-1 py-3 sm:py-4 px-6 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base text-secondary-foreground hover:bg-black/5 border border-transparent transition-all"
                             >
                                 Cancel
                             </button>
                             <button
                                 type="submit"
                                 disabled={!formData.name}
-                                className="flex-[2] py-4 px-6 bg-primary text-white rounded-2xl font-bold shadow-lg shadow-primary/20 hover:bg-brand-dark transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none transform active:scale-[0.98]"
+                                className="flex-[2] py-3 sm:py-4 px-6 bg-primary text-white rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base shadow-lg shadow-primary/20 hover:bg-brand-dark transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none transform active:scale-[0.98]"
                             >
                                 Create Class
                             </button>
@@ -138,6 +138,7 @@ const CreateClass = () => {
                 </div>
             </motion.div>
         </div>
+
     );
 };
 
