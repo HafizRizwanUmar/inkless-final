@@ -30,13 +30,13 @@ const AdminLogin = () => {
 
                 <div className="w-full md:w-1/2 p-8 md:p-12">
                     <div className="mb-6">
-                        <Link to="/login" className="flex items-center text-sm text-secondary-foreground hover:text-white transition-colors">
+                        <Link to="/login" className="flex items-center text-sm text-secondary-foreground hover:text-primary transition-colors">
                             <ArrowLeft className="w-4 h-4 mr-2" />
                             Back to Selection
                         </Link>
                     </div>
                     <div className="text-center md:text-left mb-8">
-                        <h2 className="text-2xl font-bold text-white mb-2">Admin Login</h2>
+                        <h2 className="text-2xl font-bold text-primary mb-2">Admin Login</h2>
                         <p className="text-secondary-foreground">Authenticate to access system controls.</p>
                     </div>
 
@@ -71,7 +71,7 @@ const AdminLogin = () => {
                                 <button
                                     type="button"
                                     onClick={() => setShowPassword(!showPassword)}
-                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-secondary-foreground hover:text-white transition-colors"
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-secondary-foreground hover:text-primary transition-colors"
                                 >
                                     {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                                 </button>
