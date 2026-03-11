@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpen, Calendar, CheckSquare, Clock, GraduationCap, TrendingUp, Search, Plus, Filter, MessageSquare, AlertCircle, ChevronRight, LayoutDashboard, User } from 'lucide-react';
+import { BookOpen, Calendar, CheckSquare, Clock, GraduationCap, TrendingUp, Search, Plus, Filter, MessageSquare, AlertCircle, ChevronRight, LayoutDashboard, User, FolderOpen } from 'lucide-react';
 import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 
