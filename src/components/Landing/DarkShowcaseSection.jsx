@@ -97,11 +97,11 @@ const DarkShowcaseSection = () => {
                         {/* Visual Representation */}
                         <div className="h-48 rounded-2xl bg-gradient-to-br from-red-900/40 to-orange-900/40 border border-white/5 relative overflow-hidden flex items-center justify-center group-hover:scale-[1.02] transition-transform duration-500">
                             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-                            <div className="text-red-400 text-6xl font-bold opacity-20">!</div>
+                            <div className="text-white text-6xl font-bold opacity-30">!</div>
                             <div className="absolute bottom-4 left-4 right-4 bg-red-500/20 h-2 rounded-full overflow-hidden">
                                 <div className="bg-red-500 h-full w-[85%]"></div>
                             </div>
-                            <p className="absolute bottom-7 right-4 text-xs text-red-300">85% Similarity</p>
+                            <p className="absolute bottom-7 right-4 text-xs text-white font-medium">85% Similarity</p>
                         </div>
                     </div>
 

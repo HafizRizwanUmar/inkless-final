@@ -53,7 +53,7 @@ const HeroSection = () => {
 
             <div className="container relative z-10 mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
                 <div className="max-w-2xl z-20" ref={contentRef}>
-                    <p className="tracking-[0.2em] text-sm font-semibold uppercase text-brand-accent mb-4">Elevate Your Teaching</p>
+                    <p className="tracking-[0.2em] text-sm font-bold uppercase text-brand-muted mb-4">Elevate Your Teaching</p>
                     <h1 className="text-5xl md:text-7xl font-sans font-bold tracking-tight text-brand-dark leading-[1.1] mb-6">
                         The Modern LMS <br />
                         <span className="text-brand-muted relative inline-block group">
@@ -149,7 +149,7 @@ const HeroSection = () => {
                                             <div className={`w-9 h-9 shrink-0 rounded-full flex items-center justify-center text-xs font-bold ${item.alert ? 'bg-red-200 text-red-800' : 'bg-brand-light text-brand-dark'}`}>{item.s}</div>
                                             <div className="flex-1 min-w-0 pt-0.5">
                                                 <div className="text-sm font-medium text-brand-dark truncate">{item.text}</div>
-                                                <div className={`text-xs truncate ${item.alert ? 'text-red-600 font-medium' : 'text-brand-muted'}`}>{item.sub}</div>
+                                                <div className={`text-xs truncate ${item.alert ? 'text-red-800 font-bold' : 'text-brand-muted'}`}>{item.sub}</div>
                                             </div>
                                             <div className="shrink-0 text-right space-y-1">
                                                 <div className={`text-xs font-bold px-2 py-1 rounded ${item.alert ? 'text-red-700 bg-red-100' : 'text-brand-dark bg-brand-light/40'}`}>Score: {item.score}</div>
