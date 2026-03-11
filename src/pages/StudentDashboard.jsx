@@ -124,11 +124,11 @@ const StudentDashboard = () => {
             {/* Grid of Class Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {classes.length === 0 ? (
-                    <div className="col-span-full py-16 bg-surface rounded-2xl border border-dashed border-border flex flex-col items-center justify-center text-center">
-                        <div className="bg-primary/10 p-4 rounded-full mb-4 text-primary">
-                            <FolderOpen size={32} />
+                    <div className="flex flex-col items-center justify-center p-12 text-center bg-surface/50 border border-dashed border-border rounded-2xl">
+                        <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4">
+                            <BookOpen size={32} />
                         </div>
-                        <h3 className="text-lg font-bold mb-1">No Classes Found</h3>
+                        <h3 className="text-xl font-bold mb-2">No Classes Yet</h3>
                         <p className="text-secondary-foreground max-w-sm mb-6">You are not enrolled in any classes yet. Join your first class to get started.</p>
                         <Link to="/join-class" className="bg-primary text-white px-6 py-2.5 rounded-xl font-bold hover:bg-primary/90 transition-transform active:scale-95 flex items-center gap-2">
                             <Plus size={18} /> Join a Class
