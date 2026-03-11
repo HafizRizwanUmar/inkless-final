@@ -34,7 +34,7 @@ const ClassCard = ({ classData, onEdit, onDelete }) => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
                 <div className="relative z-10 flex justify-between items-start text-white">
-                    <Link to="/class-details" state={{ classId: classData._id }} className="hover:underline decoration-1 underline-offset-2 flex-1 mr-2">
+                    <Link to={`/class-details/${classData._id}`} className="hover:underline decoration-1 underline-offset-2 flex-1 mr-2">
                         <h2 className="text-xl font-bold truncate mb-1 drop-shadow-sm">{classData.title}</h2>
                         <p className="text-sm opacity-90 truncate font-medium">{classData.section}</p>
                     </Link>

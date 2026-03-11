@@ -4,13 +4,13 @@ import { FileText, Users, BarChart2, Settings, PenTool, Plus, PlayCircle, Code, 
 import SEO from '../components/SEO';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const ClassDetails = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { classId } = location.state || {};
+    const { classId } = useParams();
 
     // If no classId, redirect back
     useEffect(() => {
@@ -353,7 +353,7 @@ const ClassDetails = () => {
                                                             )
                                                         ) : (
                                                             <button
-                                                                onClick={() => navigate('/quiz-analytics', { state: { quizId: quiz._id } })}
+                                                                onClick={() => navigate(`/quiz-analytics/${quiz._id}`)}
                                                                 className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-background border border-border text-secondary-foreground text-sm font-bold hover:text-foreground hover:border-primary/50 transition-colors"
                                                             >
                                                                 View Analytics

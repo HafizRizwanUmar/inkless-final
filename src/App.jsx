@@ -126,7 +126,7 @@ function App() {
           <Route path="/quiz-builder" element={<QuizBuilder />} />
           <Route path="/ai-quiz-generator" element={<AIQuizGenerator />} />
           <Route path="/quiz-settings" element={<QuizSettings />} />
-          <Route path="/quiz-attempt" element={<QuizAttempt />} />
+          <Route path="/quiz-attempt/:quizId" element={<QuizAttempt />} />
           <Route path="/quiz-result" element={<QuizResult />} />
           <Route path="/quiz-submissions/:quizId" element={<QuizSubmissions />} />
           <Route path="/quiz-analytics/:quizId" element={<QuizSubmissions />} />

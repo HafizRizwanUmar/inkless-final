@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
 import { LayoutDashboard, Bell, User, LogOut, BookOpen, FileText, Settings, Menu, X, CheckSquare, Search, Command, Plus } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import API_BASE_URL from '../config';
 
 const SidebarItem = ({ icon: Icon, label, path, active, onClick }) => (
     <div onClick={onClick} className="cursor-pointer">
@@ -51,7 +52,7 @@ const DashboardLayout = () => {
             // 3. Fetch Classes
             const fetchClasses = async () => {
                 try {
-                    const res = await fetch('https://inkless-backend.vercel.app/api/classes', {
+                    const res = await fetch(`${API_BASE_URL}/api/classes`, {
                         headers: { 'x-auth-token': token }
                     });
                     const data = await res.json();
@@ -63,7 +64,7 @@ const DashboardLayout = () => {
             // 4. Fetch Unread Notifications
             const fetchUnread = async () => {
                 try {
-                    const res = await fetch('https://inkless-backend.vercel.app/api/notifications/unread-count', {
+                    const res = await fetch(`${API_BASE_URL}/api/notifications/unread-count`, {
                         headers: { 'x-auth-token': token }
                     });
                     const data = await res.json();
@@ -156,11 +157,11 @@ const DashboardLayout = () => {
                                 key={cls._id}
                                 icon={BookOpen}
                                 label={cls.title}
-                                path={'/class-details'}
+                                path={`/class-details/${cls._id}`}
                                 active={location.state?.classId === cls._id}
                                 onClick={() => {
                                     // Use navigate to set state
-                                    navigate('/class-details', { state: { classId: cls._id } });
+                                    navigate(`/class-details/${cls._id}`);
                                     if (window.innerWidth < 768) setIsOpen(false);
                                 }}
                             />

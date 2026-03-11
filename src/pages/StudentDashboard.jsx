@@ -20,7 +20,7 @@ const StudentClassCard = ({ title, section, teacher, theme, classId, nextAssignm
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
             <div className="relative z-10 flex justify-between items-start text-white">
-                <Link to="/class-details" state={{ classId }} className="hover:underline decoration-1 underline-offset-2 w-full">
+                <Link to={`/class-details/${classId}`} className="hover:underline decoration-1 underline-offset-2 w-full">
                     <h2 className="text-xl font-bold truncate mb-1 drop-shadow-sm">{title}</h2>
                     <p className="text-sm opacity-90 truncate font-medium">{section}</p>
                 </Link>

@@ -63,7 +63,7 @@ const CreateAssignment = () => {
                 }
             });
 
-            navigate('/class-details', { state: { classId } });
+            navigate(`/class-details/${classId}`);
         } catch (err) {
             console.error(err);
             alert('Error creating assignment');
