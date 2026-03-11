@@ -1,6 +1,6 @@
 import API_BASE_URL from '../config';
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { ArrowLeft, Search, Filter, User, Mail, Calendar, CheckCircle, Clock, AlertCircle, MoreHorizontal, Download, Share2, Sparkles, AlertTriangle, ShieldCheck, ShieldOff, Eye, FileSpreadsheet, FileText } from 'lucide-react';
 import SEO from '../components/SEO';
@@ -25,7 +25,7 @@ const StrikeBadge = ({ count, label }) => {
 const QuizSubmissions = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { quizId } = location.state || {};
+    const { quizId } = useParams();
 
     const [attempts, setAttempts] = useState([]);
     const [quiz, setQuiz] = useState(null);

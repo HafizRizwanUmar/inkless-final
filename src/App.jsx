@@ -93,7 +93,7 @@ function App() {
           {/* Module C: Class Management */}
           <Route path="/create-class" element={<CreateClass />} />
           <Route path="/join-class" element={<JoinClass />} />
-          <Route path="/class-details" element={<ClassDetails />} />
+          <Route path="/class-details/:classId" element={<ClassDetails />} />
           <Route path="/archived" element={<ArchivedClasses />} />
           <Route path="/student-list" element={<StudentList />} />
           <Route path="/student-management" element={<StudentManagement />} />
@@ -128,8 +128,8 @@ function App() {
           <Route path="/quiz-settings" element={<QuizSettings />} />
           <Route path="/quiz-attempt" element={<QuizAttempt />} />
           <Route path="/quiz-result" element={<QuizResult />} />
-          <Route path="/quiz-submissions" element={<QuizSubmissions />} />
-          <Route path="/quiz-analytics" element={<QuizSubmissions />} />
+          <Route path="/quiz-submissions/:quizId" element={<QuizSubmissions />} />
+          <Route path="/quiz-analytics/:quizId" element={<QuizSubmissions />} />
           <Route path="/coding-quiz-test" element={<CodingQuizTest />} />
 
           {/* Module G: Analytics */}
