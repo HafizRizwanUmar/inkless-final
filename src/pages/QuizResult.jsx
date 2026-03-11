@@ -1,5 +1,5 @@
 import React from 'react';
-import { Award, CheckCircle, XCircle } from 'lucide-react';
+import { Award, CheckCircle2, XCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
 
@@ -69,7 +69,7 @@ const QuizResult = () => {
                 <div className="divide-y divide-border">
                     <div className="p-6">
                         <div className="flex gap-4">
-                            <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0" />
+                            <CheckCircle2 className="w-6 h-6 text-green-500 flex-shrink-0" />
                             <div>
                                 <p className="font-bold mb-2">Q1: Which of the following is NOT a supervised learning algorithm?</p>
                                 <p className="text-sm text-green-400">Your Answer: K-Means Clustering</p>

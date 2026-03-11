@@ -1,6 +1,6 @@
 import API_BASE_URL from '../config';
 import React, { useState, useEffect } from 'react';
-import { FileText, Users, BarChart2, Settings, PenTool, Plus, PlayCircle, Code, ChevronRight, Clock, Archive, HelpCircle, CheckCircle } from 'lucide-react';
+import { FileText, Users, BarChart2, Settings, PenTool, Plus, PlayCircle, Code, ChevronRight, Clock, Archive, HelpCircle, CheckCircle2 } from 'lucide-react';
 import SEO from '../components/SEO';
 
 import { motion, AnimatePresence } from 'framer-motion';
@@ -363,10 +363,10 @@ const ClassDetails = () => {
                                                         {!isTeacher ? (
                                                             isExpired ? (
                                                                 <button
-                                                                    onClick={() => navigate('/quiz-attempt', { state: { quizId: quiz._id } })}
+                                                                    onClick={() => navigate(`/quiz-result/${quiz._id}`)}
                                                                     className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-background border border-border text-secondary-foreground text-sm font-bold hover:text-foreground transition-colors"
                                                                 >
-                                                                    <CheckCircle className="w-4 h-4 text-green-500" /> View Result
+                                                                    <CheckCircle2 className="w-4 h-4 text-green-500" /> View Result
                                                                 </button>
                                                             ) : isNotStarted ? (
                                                                 <div className="w-full text-center py-2.5 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-400 text-sm font-bold">
