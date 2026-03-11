@@ -16,6 +16,7 @@ const SidebarItem = ({ icon: Icon, label, path, active, onClick }) => (
 const DashboardLayout = () => {
     const [isOpen, setIsOpen] = useState(true);
     const [enrolledClasses, setEnrolledClasses] = useState([]);
+    const [unreadCount, setUnreadCount] = useState(0);
 
     // Default fallback user state
     const [user, setUser] = useState({ name: 'Student', role: 'student', avatar: '/avatars/avatar_1.png' });
@@ -58,6 +59,21 @@ const DashboardLayout = () => {
                 } catch (err) { console.error("Failed to fetch classes", err); }
             };
             fetchClasses();
+
+            // 4. Fetch Unread Notifications
+            const fetchUnread = async () => {
+                try {
+                    const res = await fetch('https://inkless-backend.vercel.app/api/notifications/unread-count', {
+                        headers: { 'x-auth-token': token }
+                    });
+                    const data = await res.json();
+                    setUnreadCount(data.count || 0);
+                } catch (err) { console.error("Failed to fetch notifications", err); }
+            };
+            fetchUnread();
+            // Polling every 60s
+            const interval = setInterval(fetchUnread, 60000);
+            return () => clearInterval(interval);
 
         } catch (e) {
             console.error("Error decoding token", e);
@@ -212,10 +228,14 @@ const DashboardLayout = () => {
                             </Link>
                         )}
 
-                        <button className="p-2 hover:bg-muted rounded-full text-muted-foreground hover:text-foreground relative">
+                        <Link to="/notifications" className="p-2 hover:bg-muted rounded-full text-muted-foreground hover:text-foreground relative">
                             <Bell className="w-5 h-5" />
-                            <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-surface" />
-                        </button>
+                            {unreadCount > 0 && (
+                                <span className="absolute top-2 right-2 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white border-2 border-surface">
+                                    {unreadCount > 9 ? '9+' : unreadCount}
+                                </span>
+                            )}
+                        </Link>
                         <div className="h-8 w-px bg-border mx-1" />
 
                         <div className="flex items-center gap-3 pl-1 cursor-pointer hover:bg-muted/50 p-1 rounded-full transition-colors pr-3">

@@ -343,15 +343,22 @@ const QuizAttempt = () => {
                                                     <div className="bg-background border border-border rounded-xl p-4 text-sm text-foreground">
                                                         <p className="text-xs text-secondary-foreground mb-2 font-bold uppercase">Your Answer</p>
                                                         {studentAnswer.textAnswer}
+                                                        <div className="mt-2 space-y-2">
+                                                            {result.resultsShared ? (
+                                                                studentAnswer.aiFeedback && (
+                                                                    <div className="p-3 bg-primary/10 border border-primary/20 rounded-xl text-sm italic text-primary">
+                                                                        <span className="font-bold not-italic">Teacher/AI Feedback:</span> {studentAnswer.aiFeedback}
+                                                                    </div>
+                                                                )
+                                                            ) : (
+                                                                <p className="text-xs font-medium text-orange-400 bg-orange-400/10 px-3 py-1.5 rounded-lg border border-orange-400/20 w-fit">
+                                                                    Detailed results pending teacher review
+                                                                </p>
+                                                            )}
+                                                        </div>
                                                     </div>
                                                 ) : (
                                                     <p className="text-xs text-secondary-foreground italic">Not answered</p>
-                                                )}
-                                                {studentAnswer?.aiFeedback && (
-                                                    <div className="bg-primary/10 border border-primary/20 rounded-xl p-4 text-sm">
-                                                        <p className="text-xs font-bold text-primary mb-2 uppercase">AI Evaluation</p>
-                                                        <p className="text-white">{studentAnswer.aiFeedback}</p>
-                                                    </div>
                                                 )}
                                             </>
                                         )}

@@ -4,29 +4,75 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const Notifications = () => {
     const [filter, setFilter] = useState('All');
-    const [notifications, setNotifications] = useState([
-        { id: 1, type: 'Assignment', title: 'New Assignment Posted', message: 'Calculus III assignment is now available.', time: '2 hours ago', read: false },
-        { id: 2, type: 'System', title: 'System Maintenance', message: 'Scheduled maintenance on Saturday 10 PM.', time: '5 hours ago', read: true },
-        { id: 3, type: 'Quiz', title: 'Quiz Graded', message: 'Your score for Physics Quiz 1 is 85/100.', time: '1 day ago', read: false },
-        { id: 4, type: 'Assignment', title: 'Submission Reminder', message: 'History Essay is due tomorrow.', time: '1 day ago', read: true },
-    ]);
+    const [notifications, setNotifications] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    const fetchNotifications = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            const res = await axios.get('https://inkless-backend.vercel.app/api/notifications', {
+                headers: { 'x-auth-token': token }
+            });
+            setNotifications(res.data);
+        } catch (err) {
+            console.error(err);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchNotifications();
+    }, []);
+
+    const markAllAsRead = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            await axios.put('https://inkless-backend.vercel.app/api/notifications/read-all', {}, {
+                headers: { 'x-auth-token': token }
+            });
+            setNotifications(notifications.map(n => ({ ...n, read: true })));
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    const markAsRead = async (id) => {
+        try {
+            const token = localStorage.getItem('token');
+            await axios.put(`https://inkless-backend.vercel.app/api/notifications/read/${id}`, {}, {
+                headers: { 'x-auth-token': token }
+            });
+            setNotifications(notifications.map(n => n._id === id ? { ...n, read: true } : n));
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    const deleteNotification = async (id) => {
+        try {
+            const token = localStorage.getItem('token');
+            await axios.delete(`https://inkless-backend.vercel.app/api/notifications/${id}`, {
+                headers: { 'x-auth-token': token }
+            });
+            setNotifications(notifications.filter(n => n._id !== id));
+        } catch (err) {
+            console.error(err);
+        }
+    };
 
     const filters = ['All', 'Assignment', 'Quiz', 'System'];
 
     const getIcon = (type) => {
         switch (type) {
-            case 'Assignment': return <FileText className="w-5 h-5 text-brand-accent" />;
-            case 'Quiz': return <CheckCircle className="w-5 h-5 text-green-400" />;
-            case 'System': return <Info className="w-5 h-5 text-yellow-400" />;
+            case 'ASSIGNMENT': return <FileText className="w-5 h-5 text-brand-accent" />;
+            case 'QUIZ': return <CheckCircle className="w-5 h-5 text-green-400" />;
+            case 'SYSTEM': return <Info className="w-5 h-5 text-yellow-400" />;
             default: return <Bell className="w-5 h-5 text-gray-400" />;
         }
     };
 
-    const deleteNotification = (id) => {
-        setNotifications(notifications.filter(n => n.id !== id));
-    };
-
-    const filteredNotifications = filter === 'All' ? notifications : notifications.filter(n => n.type === filter);
+    const filteredNotifications = filter === 'All' ? notifications : notifications.filter(n => n.type === filter.toUpperCase());
 
     return (
         <div className="max-w-4xl mx-auto space-y-6">

@@ -25,28 +25,85 @@ const QuizSubmissions = () => {
     const navigate = useNavigate();
     const { quizId } = location.state || {};
 
-    const [data, setData] = useState(null);
+    const [attempts, setAttempts] = useState([]);
+    const [quiz, setQuiz] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [aiStatus, setAiStatus] = useState({ available: false, msg: 'Checking...' });
+    const [isProcessingAI, setIsProcessingAI] = useState(false);
+    const [isSharing, setIsSharing] = useState(false);
     const [selected, setSelected] = useState(null);
     const [downloading, setDownloading] = useState(''); // 'excel' | 'zip' | ''
 
     useEffect(() => {
         if (!quizId) return navigate(-1);
-        const fetch = async () => {
+        const fetchData = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const res = await axios.get(`https://inkless-backend.vercel.app/api/quizzes/submissions/${quizId}`, {
-                    headers: { 'x-auth-token': token }
-                });
-                setData(res.data);
+                if (!token) return;
+
+                const [submissionsRes, aiStatusRes, quizRes] = await Promise.all([
+                    axios.get(`https://inkless-backend.vercel.app/api/quizzes/submissions/${quizId}`, {
+                        headers: { 'x-auth-token': token }
+                    }),
+                    axios.get(`https://inkless-backend.vercel.app/api/quizzes/ai-status`, {
+                        headers: { 'x-auth-token': token }
+                    }),
+                    axios.get(`https://inkless-backend.vercel.app/api/quizzes/${quizId}`, {
+                        headers: { 'x-auth-token': token }
+                    })
+                ]);
+
+                setAttempts(submissionsRes.data);
+                setAiStatus(aiStatusRes.data);
+                setQuiz(quizRes.data);
             } catch (err) {
                 console.error(err);
             } finally {
                 setLoading(false);
             }
         };
-        fetch();
+        fetchData();
     }, [quizId, navigate]);
+
+    const handleBatchMarking = async () => {
+        if (!window.confirm('This will use AI to mark all text questions for all students. Continue?')) return;
+        setIsProcessingAI(true);
+        try {
+            const token = localStorage.getItem('token');
+            const res = await axios.post(`https://inkless-backend.vercel.app/api/quizzes/grade-all/${quizId}`, {}, {
+                headers: { 'x-auth-token': token }
+            });
+            alert(res.data.msg);
+            // Refresh data
+            const submissionsRes = await axios.get(`https://inkless-backend.vercel.app/api/quizzes/submissions/${quizId}`, {
+                headers: { 'x-auth-token': token }
+            });
+            setAttempts(submissionsRes.data);
+        } catch (err) {
+            console.error(err);
+            alert('Failed to process AI marking.');
+        } finally {
+            setIsProcessingAI(false);
+        }
+    };
+
+    const handleShareResults = async () => {
+        if (!window.confirm('Share results with all students? Students will receive a notification and see their full scores.')) return;
+        setIsSharing(true);
+        try {
+            const token = localStorage.getItem('token');
+            await axios.post(`https://inkless-backend.vercel.app/api/quizzes/share-results/${quizId}`, {}, {
+                headers: { 'x-auth-token': token }
+            });
+            setQuiz({ ...quiz, resultsShared: true });
+            alert('Results shared successfully!');
+        } catch (err) {
+            console.error(err);
+            alert('Failed to share results.');
+        } finally {
+            setIsSharing(false);
+        }
+    };
 
     const handleDownload = async (type) => {
         try {
@@ -67,7 +124,7 @@ const QuizSubmissions = () => {
             const url = URL.createObjectURL(new Blob([blob], { type: mimeType }));
             const a = document.createElement('a');
             a.href = url;
-            a.download = `${data?.quiz?.title || 'quiz'}_${type === 'excel' ? 'submissions' : 'reports'}.${ext}`;
+            a.download = `${quiz?.title || 'quiz'}_${type === 'excel' ? 'submissions' : 'reports'}.${ext}`;
             a.click();
             URL.revokeObjectURL(url);
         } catch (err) {
@@ -79,15 +136,14 @@ const QuizSubmissions = () => {
     };
 
     if (loading) return <div className="min-h-screen flex items-center justify-center text-secondary-foreground">Loading submissions...</div>;
-    if (!data) return <div className="min-h-screen flex items-center justify-center text-red-400">Failed to load submissions.</div>;
+    if (!quiz || !attempts) return <div className="min-h-screen flex items-center justify-center text-red-400">Failed to load submissions.</div>;
 
-    const { quiz, attempts } = data;
     const suspiciousCount = attempts.filter(a => a.strikes > 0).length;
 
     return (
         <div className="max-w-5xl mx-auto p-6">
             {/* Header */}
-            <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-secondary-foreground hover:text-white mb-6 transition-colors">
+            <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-secondary-foreground hover:text-primary mb-6 transition-colors">
                 <ArrowLeft className="w-4 h-4" /> Back
             </button>
 
@@ -96,33 +152,53 @@ const QuizSubmissions = () => {
                     <h1 className="text-2xl font-bold">{quiz.title}</h1>
                     <p className="text-secondary-foreground text-sm mt-1">{attempts.length} submission{attempts.length !== 1 ? 's' : ''}</p>
                 </div>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-3 items-center">
                     <div className="bg-surface border border-border rounded-xl px-4 py-3 text-center">
                         <p className="text-xs text-secondary-foreground">Submissions</p>
-                        <p className="text-2xl font-black text-white">{attempts.length}</p>
+                        <p className="text-2xl font-black text-primary">{attempts.length}</p>
                     </div>
                     <div className={`rounded-xl px-4 py-3 text-center border ${suspiciousCount > 0 ? 'bg-red-500/10 border-red-500/30' : 'bg-green-500/10 border-green-500/30'}`}>
                         <p className={`text-xs ${suspiciousCount > 0 ? 'text-red-400' : 'text-green-400'}`}>Suspicious</p>
                         <p className={`text-2xl font-black ${suspiciousCount > 0 ? 'text-red-400' : 'text-green-400'}`}>{suspiciousCount}</p>
                     </div>
-                    {/* Export Buttons */}
+
+                    {/* AI Status Indicator */}
+                    <div className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold border ${aiStatus.available ? 'bg-blue-500/10 border-blue-500/30 text-blue-400' : 'bg-yellow-500/10 border-yellow-500/30 text-yellow-400'}`}>
+                        <div className={`w-2 h-2 rounded-full ${aiStatus.available ? 'bg-blue-400 animate-pulse' : 'bg-yellow-400'}`} />
+                        AI Ping 1.0: {aiStatus.available ? 'Available' : 'Unavailable'}
+                    </div>
+
+                    <button
+                        onClick={handleBatchMarking}
+                        disabled={isProcessingAI || !aiStatus.available || attempts.length === 0}
+                        className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-purple-600 text-white text-sm font-bold hover:bg-purple-700 transition-colors disabled:opacity-50 shadow-sm"
+                    >
+                        {isProcessingAI ? 'Processing...' : 'Mark All with AI'}
+                    </button>
+
+                    <button
+                        onClick={handleShareResults}
+                        disabled={isSharing || attempts.length === 0 || quiz?.resultsShared}
+                        className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold transition-colors shadow-sm ${quiz?.resultsShared ? 'bg-green-600/20 text-green-400 cursor-default' : 'bg-green-600 text-white hover:bg-green-700'}`}
+                    >
+                        {quiz?.resultsShared ? <><CheckCircle className="w-4 h-4" /> Results Shared</> : 'Share Results'}
+                    </button>
+
                     <button
                         onClick={() => handleDownload('excel')}
                         disabled={downloading === 'excel'}
                         className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-green-600 text-white text-sm font-bold hover:bg-green-700 transition-colors disabled:opacity-50 shadow-sm"
-                        title="Download Excel with all submissions"
+                        title="Download Excel"
                     >
-                        <FileSpreadsheet className="w-4 h-4" />
-                        {downloading === 'excel' ? 'Exporting...' : 'Excel'}
+                        <FileSpreadsheet className="w-4 h-4" /> {downloading === 'excel' ? 'Exporting...' : 'Excel'}
                     </button>
                     <button
                         onClick={() => handleDownload('zip')}
                         disabled={downloading === 'zip'}
-                        className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-brand-muted text-white text-sm font-bold hover:bg-brand-muted transition-colors disabled:opacity-50 shadow-sm"
-                        title="Download ZIP with Best, Average & Worst student PDFs"
+                        className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-brand-muted text-primary text-sm font-bold hover:bg-muted transition-colors disabled:opacity-50 shadow-sm"
+                        title="Download PDF Reports"
                     >
-                        <FileArchive className="w-4 h-4" />
-                        {downloading === 'zip' ? 'Generating...' : 'PDF Reports'}
+                        <FileText className="w-4 h-4" /> {downloading === 'zip' ? 'Generating...' : 'PDF Reports'}
                     </button>
                 </div>
             </div>
@@ -176,7 +252,7 @@ const QuizSubmissions = () => {
                                             <td className="px-5 py-4">
                                                 <div className="flex items-center gap-3">
                                                     <div className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold shrink-0
-                                                        ${isSuspicious ? 'bg-red-500/10 text-red-400' : 'bg-primary/10 text-primary'}`}>
+                                                    ${isSuspicious ? 'bg-red-500/10 text-red-400' : 'bg-primary/10 text-primary'}`}>
                                                         {att.student?.name?.charAt(0)?.toUpperCase() || <User className="w-4 h-4" />}
                                                     </div>
                                                     <div>
@@ -216,7 +292,6 @@ const QuizSubmissions = () => {
                                             </td>
                                         </tr>
 
-                                        {/* Expanded row — show answers + AI feedback */}
                                         {selected === att._id && (
                                             <tr>
                                                 <td colSpan="7" className="px-5 py-4 bg-background/50">
@@ -226,13 +301,13 @@ const QuizSubmissions = () => {
                                                             <div key={idx} className="bg-surface border border-border rounded-xl p-4 text-sm">
                                                                 <span className="text-xs font-bold text-primary">Q{ans.questionIndex + 1}</span>
                                                                 {ans.selectedOptionIndex !== undefined && (
-                                                                    <p className="mt-1 text-secondary-foreground">Option selected: <span className="font-bold text-white">{String.fromCharCode(65 + ans.selectedOptionIndex)}</span></p>
+                                                                    <p className="mt-1 text-secondary-foreground">Option selected: <span className="font-bold text-primary">{String.fromCharCode(65 + ans.selectedOptionIndex)}</span></p>
                                                                 )}
                                                                 {ans.textAnswer && (
-                                                                    <p className="mt-1 text-secondary-foreground">Answer: <span className="text-white">{ans.textAnswer}</span></p>
+                                                                    <p className="mt-1 text-secondary-foreground">Answer: <span className="text-primary">{ans.textAnswer}</span></p>
                                                                 )}
                                                                 {ans.aiFeedback && (
-                                                                    <div className="mt-2 p-2 bg-primary/10 border border-primary/20 rounded-lg text-xs text-white">
+                                                                    <div className="mt-2 p-2 bg-primary/10 border border-primary/20 rounded-lg text-xs text-primary">
                                                                         <span className="font-bold text-primary">AI: </span>{ans.aiFeedback}
                                                                     </div>
                                                                 )}
