@@ -1,3 +1,4 @@
+import API_BASE_URL from '../config';
 import React, { useState, useEffect } from 'react';
 import { FileText, Users, BarChart2, Settings, PenTool, Plus, PlayCircle, Code, ChevronRight, Clock, Archive, HelpCircle, CheckCircle } from 'lucide-react';
 import SEO from '../components/SEO';
@@ -36,7 +37,7 @@ const ClassDetails = () => {
         const fetchClassData = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const res = await axios.get(`https://inkless-backend.vercel.app/api/classes/${classId}`, { headers: { 'x-auth-token': token } });
+                const res = await axios.get(`${API_BASE_URL}/api/classes/${classId}`, { headers: { 'x-auth-token': token } });
                 setClassData(res.data);
 
                 // Decode token
@@ -57,10 +58,10 @@ const ClassDetails = () => {
         if (!classId || !token) return;
         const hdrs = { headers: { 'x-auth-token': token } };
 
-        if (activeTab === 'Quizzes') axios.get(`https://inkless-backend.vercel.app/api/quizzes/class/${classId}`, hdrs).then(res => setQuizzes(res.data)).catch(console.error);
-        if (activeTab === 'Assignments') axios.get(`https://inkless-backend.vercel.app/api/assignments/class/${classId}`, hdrs).then(res => setAssignments(res.data)).catch(console.error);
-        if (activeTab === 'Lab Tasks') axios.get(`https://inkless-backend.vercel.app/api/lab-tasks/class/${classId}`, hdrs).then(res => setLabTasks(res.data)).catch(console.error);
-        if (activeTab === 'Analytics') axios.get(`https://inkless-backend.vercel.app/api/classes/${classId}/analytics`, hdrs).then(res => setAnalyticsData(res.data)).catch(console.error);
+        if (activeTab === 'Quizzes') axios.get(`${API_BASE_URL}/api/quizzes/class/${classId}`, hdrs).then(res => setQuizzes(res.data)).catch(console.error);
+        if (activeTab === 'Assignments') axios.get(`${API_BASE_URL}/api/assignments/class/${classId}`, hdrs).then(res => setAssignments(res.data)).catch(console.error);
+        if (activeTab === 'Lab Tasks') axios.get(`${API_BASE_URL}/api/lab-tasks/class/${classId}`, hdrs).then(res => setLabTasks(res.data)).catch(console.error);
+        if (activeTab === 'Analytics') axios.get(`${API_BASE_URL}/api/classes/${classId}/analytics`, hdrs).then(res => setAnalyticsData(res.data)).catch(console.error);
     }, [activeTab, classId]);
 
     if (!classData || !currentUser) return <div className="flex h-screen items-center justify-center text-secondary-foreground">Loading...</div>;
@@ -72,7 +73,7 @@ const ClassDetails = () => {
         if (!confirm) return;
         try {
             const token = localStorage.getItem('token');
-            await axios.put(`https://inkless-backend.vercel.app/api/classes/${classId}/archive`, {}, {
+            await axios.put(`${API_BASE_URL}/api/classes/${classId}/archive`, {}, {
                 headers: { 'x-auth-token': token }
             });
             navigate('/teacher/dashboard');

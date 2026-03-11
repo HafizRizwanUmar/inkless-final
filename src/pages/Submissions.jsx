@@ -1,3 +1,4 @@
+import API_BASE_URL from '../config';
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -16,7 +17,7 @@ const Submissions = () => {
         const fetchSubmissions = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const res = await axios.get(`https://inkless-backend.vercel.app/api/submissions/assignment/${assignmentId}`, {
+                const res = await axios.get(`${API_BASE_URL}/api/submissions/assignment/${assignmentId}`, {
                     headers: { 'x-auth-token': token }
                 });
                 setSubmissions(res.data);

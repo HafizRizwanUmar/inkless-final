@@ -1,3 +1,4 @@
+import API_BASE_URL from '../config';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Eye, EyeOff, Lock, Mail, User, BookOpen } from 'lucide-react';
@@ -13,7 +14,7 @@ const StudentSignup = () => {
     const handleSignup = async (e) => {
         e.preventDefault();
         try {
-            const res = await fetch('https://inkless-backend.vercel.app/api/auth/signup', {
+            const res = await fetch(`${API_BASE_URL}/api/auth/signup`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, email, password, role: 'student' })

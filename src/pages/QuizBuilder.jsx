@@ -1,3 +1,4 @@
+import API_BASE_URL from '../config';
 import React, { useState, useEffect } from 'react';
 import { Plus, Trash2, CheckCircle2, AlertCircle, Clock, Settings, Save, Sparkles, ChevronLeft, Layout, List, Type, FileText, Code, ChevronRight, Wand2, ArrowLeft, Brain, PenTool, AlignLeft, Check } from 'lucide-react';
 import SEO from '../components/SEO';
@@ -72,7 +73,7 @@ const QuizBuilder = () => {
         const fetchClasses = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const res = await axios.get('https://inkless-backend.vercel.app/api/classes', { headers: { 'x-auth-token': token } });
+                const res = await axios.get(`${API_BASE_URL}/api/classes`, { headers: { 'x-auth-token': token } });
                 setClasses(res.data);
             } catch (err) { console.error(err); }
         };
@@ -120,7 +121,7 @@ const QuizBuilder = () => {
 
             // Build specific count breakdown for AI prompt context
             let numQuestions = getTotalCount();
-            const res = await axios.post('https://inkless-backend.vercel.app/api/quizzes/generate', {
+            const res = await axios.post(`${API_BASE_URL}/api/quizzes/generate`, {
                 material: aiMaterial,
                 numQuestions: numQuestions,
                 types: getTypesForAI(),
@@ -188,7 +189,7 @@ const QuizBuilder = () => {
         setLoading(true);
         try {
             const token = localStorage.getItem('token');
-            await axios.post('https://inkless-backend.vercel.app/api/quizzes', payload, { headers: { 'x-auth-token': token } });
+            await axios.post(`${API_BASE_URL}/api/quizzes`, payload, { headers: { 'x-auth-token': token } });
             alert('Quiz created successfully!');
             navigate(-1);
         } catch (err) {

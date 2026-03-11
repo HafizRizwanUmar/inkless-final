@@ -1,3 +1,4 @@
+import API_BASE_URL from '../config';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Clock, AlertCircle, CheckCircle2, ChevronRight, ChevronLeft, Send, Timer, HelpCircle, ShieldAlert, BookOpen, User } from 'lucide-react';
 import SEO from '../components/SEO';
@@ -45,13 +46,13 @@ const QuizAttempt = () => {
                 const token = localStorage.getItem('token');
 
                 try {
-                    const attemptRes = await axios.get(`https://inkless-backend.vercel.app/api/quizzes/attempt/${quizId}`, {
+                    const attemptRes = await axios.get(`${API_BASE_URL}/api/quizzes/attempt/${quizId}`, {
                         headers: { 'x-auth-token': token }
                     });
                     if (attemptRes.data) {
                         setResult(attemptRes.data);
                         setLoading(false);
-                        const quizRes = await axios.get(`https://inkless-backend.vercel.app/api/quizzes/${quizId}`, {
+                        const quizRes = await axios.get(`${API_BASE_URL}/api/quizzes/${quizId}`, {
                             headers: { 'x-auth-token': token }
                         });
                         setQuiz(quizRes.data);
@@ -63,7 +64,7 @@ const QuizAttempt = () => {
                     }
                 }
 
-                const res = await axios.get(`https://inkless-backend.vercel.app/api/quizzes/${quizId}`, {
+                const res = await axios.get(`${API_BASE_URL}/api/quizzes/${quizId}`, {
                     headers: { 'x-auth-token': token }
                 });
                 setQuiz(res.data);
@@ -98,7 +99,7 @@ const QuizAttempt = () => {
                 ...answers[key]
             }));
 
-            const res = await axios.post('https://inkless-backend.vercel.app/api/quizzes/attempt', {
+            const res = await axios.post(`${API_BASE_URL}/api/quizzes/attempt`, {
                 quizId,
                 answers: formattedAnswers,
                 strikes: strikeRef.current.total,

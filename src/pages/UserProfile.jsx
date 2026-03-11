@@ -1,3 +1,4 @@
+import API_BASE_URL from '../config';
 import React, { useState, useEffect } from 'react';
 import { User, Mail, Shield, Camera, Edit2, Key, Bell, Globe, LogOut, ChevronRight, CheckCircle2, AlertCircle, Save, X } from 'lucide-react';
 import SEO from '../components/SEO';
@@ -20,7 +21,7 @@ const UserProfile = () => {
         const fetchProfile = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const res = await axios.get('https://inkless-backend.vercel.app/api/auth/profile', {
+                const res = await axios.get(`${API_BASE_URL}/api/auth/profile`, {
                     headers: { 'x-auth-token': token }
                 });
 
@@ -49,7 +50,7 @@ const UserProfile = () => {
     const handleSave = async () => {
         try {
             const token = localStorage.getItem('token');
-            await axios.put('https://inkless-backend.vercel.app/api/auth/profile', {
+            await axios.put(`${API_BASE_URL}/api/auth/profile`, {
                 name: profile.name,
                 bio: profile.bio,
                 theme: profile.theme,

@@ -1,3 +1,4 @@
+import API_BASE_URL from '../config';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -130,7 +131,7 @@ const LabGradingPage = () => {
     const handleOpenZip = async (url) => {
         setIsExtracting(true);
         try {
-            const response = await fetch(`https://inkless-backend.vercel.app${url}`);
+            const response = await fetch(`${API_BASE_URL}${url}`);
             if (!response.ok) throw new Error("Failed to fetch ZIP");
             const blob = await response.blob();
 
@@ -170,7 +171,7 @@ const LabGradingPage = () => {
         const fetchSub = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const res = await axios.get(`https://inkless-backend.vercel.app/api/lab-submissions/${submissionId}`, { headers: { 'x-auth-token': token } });
+                const res = await axios.get(`${API_BASE_URL}/api/lab-submissions/${submissionId}`, { headers: { 'x-auth-token': token } });
                 setSubmission(res.data);
                 setGradeData({
                     marks: res.data.obtainedMarks || '',
@@ -190,7 +191,7 @@ const LabGradingPage = () => {
         setSubmitting(true);
         try {
             const token = localStorage.getItem('token');
-            await axios.post(`https://inkless-backend.vercel.app/api/lab-submissions/${submissionId}/grade`,
+            await axios.post(`${API_BASE_URL}/api/lab-submissions/${submissionId}/grade`,
                 { marks: gradeData.marks, feedback: gradeData.feedback, annotations: JSON.stringify(annotations) },
                 { headers: { 'x-auth-token': token } }
             );
@@ -274,7 +275,7 @@ const LabGradingPage = () => {
                                         <button onClick={() => handleOpenZip(submission.submittedDocument)} disabled={isExtracting} className="bg-primary text-white px-6 py-3 rounded-lg font-bold hover:bg-primary/90 transition-all flex items-center gap-2 shadow-sm">
                                             <Archive size={18} /> {isExtracting ? 'Extracting ZIP...' : 'Open ZIP in Browser Viewer'}
                                         </button>
-                                        <a href={`https://inkless-backend.vercel.app${submission.submittedDocument}`} download className="text-primary hover:underline font-bold text-sm">Download ZIP Instead</a>
+                                        <a href={`${API_BASE_URL}${submission.submittedDocument}`} download className="text-primary hover:underline font-bold text-sm">Download ZIP Instead</a>
                                     </div>
 
                                     {zipFiles.length > 0 && (
@@ -311,7 +312,7 @@ const LabGradingPage = () => {
                                     <p className="text-secondary-foreground text-sm">Submitted PDF — annotate directly below:</p>
                                     <div className="relative rounded-xl overflow-hidden border border-border" style={{ minHeight: 700 }}>
                                         <iframe
-                                            src={`https://inkless-backend.vercel.app${submission.submittedDocument}#toolbar=0`}
+                                            src={`${API_BASE_URL}${submission.submittedDocument}#toolbar=0`}
                                             className="w-full border-0"
                                             style={{ height: 700, position: 'relative', zIndex: 1 }}
                                             title="Submission PDF"
@@ -320,7 +321,7 @@ const LabGradingPage = () => {
                                             annotations={annotations} onAnnotationsChange={setAnnotations}
                                             tool={tool} color={color} />
                                     </div>
-                                    <a href={`https://inkless-backend.vercel.app${submission.submittedDocument}`} download className="text-primary hover:underline text-xs font-bold self-start">Download PDF</a>
+                                    <a href={`${API_BASE_URL}${submission.submittedDocument}`} download className="text-primary hover:underline text-xs font-bold self-start">Download PDF</a>
                                 </div>
                             )}
                         </div>
@@ -376,7 +377,7 @@ const LabGradingPage = () => {
                                                         <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider">Attachments</p>
                                                         <div className="flex gap-4 overflow-x-auto">
                                                             {ans.images.map((img, i) => (
-                                                                <img key={i} src={`https://inkless-backend.vercel.app${img}`} alt="Answer" className="max-h-60 rounded-lg border border-border object-contain bg-black/5" />
+                                                                <img key={i} src={`${API_BASE_URL}${img}`} alt="Answer" className="max-h-60 rounded-lg border border-border object-contain bg-black/5" />
                                                             ))}
                                                         </div>
                                                     </div>

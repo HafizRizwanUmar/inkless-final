@@ -1,3 +1,4 @@
+import API_BASE_URL from '../config';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -184,7 +185,7 @@ const GradingPage = () => {
         const fetchSubmission = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const res = await axios.get(`https://inkless-backend.vercel.app/api/submissions/${submissionId}`, { headers: { 'x-auth-token': token } });
+                const res = await axios.get(`${API_BASE_URL}/api/submissions/${submissionId}`, { headers: { 'x-auth-token': token } });
                 setSubmission(res.data);
                 setGradeData({ marks: res.data.obtainedMarks || '', feedback: res.data.teacherFeedback || '' });
                 // Load saved annotations if any
@@ -201,7 +202,7 @@ const GradingPage = () => {
         setSubmitting(true);
         try {
             const token = localStorage.getItem('token');
-            await axios.post(`https://inkless-backend.vercel.app/api/submissions/${submissionId}/grade`,
+            await axios.post(`${API_BASE_URL}/api/submissions/${submissionId}/grade`,
                 { marks: gradeData.marks, feedback: gradeData.feedback, annotations: JSON.stringify(annotations) },
                 { headers: { 'x-auth-token': token } }
             );
@@ -302,7 +303,7 @@ const GradingPage = () => {
                                 </div>
                                 <div ref={pdfContainerRef} className="relative bg-gray-200" style={{ minHeight: 600 }}>
                                     <iframe
-                                        src={`https://inkless-backend.vercel.app${submission.fileUrl}#toolbar=0`}
+                                        src={`${API_BASE_URL}${submission.fileUrl}#toolbar=0`}
                                         className="w-full border-0"
                                         style={{ height: 800, position: 'relative', zIndex: 1 }}
                                         title="Submission PDF"
@@ -324,7 +325,7 @@ const GradingPage = () => {
                                 <div className="relative">
                                     <img
                                         ref={imgRef}
-                                        src={`https://inkless-backend.vercel.app${submission.imagePath}`}
+                                        src={`${API_BASE_URL}${submission.imagePath}`}
                                         alt="Submission"
                                         className="w-full block"
                                         onLoad={handleImgLoad}

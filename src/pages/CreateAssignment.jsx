@@ -1,3 +1,4 @@
+import API_BASE_URL from '../config';
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -55,7 +56,7 @@ const CreateAssignment = () => {
             }
 
             const token = localStorage.getItem('token');
-            await axios.post('https://inkless-backend.vercel.app/api/assignments', data, {
+            await axios.post(`${API_BASE_URL}/api/assignments`, data, {
                 headers: {
                     'x-auth-token': token,
                     'Content-Type': 'multipart/form-data'

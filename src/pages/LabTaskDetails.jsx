@@ -1,3 +1,4 @@
+import API_BASE_URL from '../config';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -63,10 +64,10 @@ const LabTaskDetails = () => {
                 const user = JSON.parse(decodeURIComponent(window.atob(base64).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''))).user;
                 setCurrentUser(user);
 
-                const resLab = await axios.get(`https://inkless-backend.vercel.app/api/lab-tasks/${labId}`, { headers: { 'x-auth-token': token } });
+                const resLab = await axios.get(`${API_BASE_URL}/api/lab-tasks/${labId}`, { headers: { 'x-auth-token': token } });
                 setLab(resLab.data);
 
-                const resSub = await axios.get(`https://inkless-backend.vercel.app/api/lab-submissions/my/${labId}`, { headers: { 'x-auth-token': token } });
+                const resSub = await axios.get(`${API_BASE_URL}/api/lab-submissions/my/${labId}`, { headers: { 'x-auth-token': token } });
                 if (resSub.data) {
                     setSubmission(resSub.data);
                     const ansMap = {};
@@ -246,7 +247,7 @@ const LabTaskDetails = () => {
             });
 
             const token = localStorage.getItem('token');
-            const res = await axios.post('https://inkless-backend.vercel.app/api/lab-submissions', formData, {
+            const res = await axios.post(`${API_BASE_URL}/api/lab-submissions`, formData, {
                 headers: { 'x-auth-token': token, 'Content-Type': 'multipart/form-data' }
             });
             setSubmission(res.data);
@@ -303,7 +304,7 @@ const LabTaskDetails = () => {
                             <h3 className="font-bold text-lg mb-1">Task Document</h3>
                             <p className="text-secondary-foreground text-sm">Download the PDF to view the task questions.</p>
                         </div>
-                        <a href={`https://inkless-backend.vercel.app${lab.taskDocument}`} target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-lg font-bold hover:bg-primary/20 transition-colors">
+                        <a href={`${API_BASE_URL}${lab.taskDocument}`} target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-lg font-bold hover:bg-primary/20 transition-colors">
                             <FileText size={18} /> View PDF
                         </a>
                     </div>
@@ -345,7 +346,7 @@ const LabTaskDetails = () => {
                                                 </div>
                                                 <div className="relative rounded-xl overflow-hidden border border-border w-full" style={{ minHeight: 600 }}>
                                                     <iframe
-                                                        src={`https://inkless-backend.vercel.app${submission.submittedDocument}#toolbar=0`}
+                                                        src={`${API_BASE_URL}${submission.submittedDocument}#toolbar=0`}
                                                         className="w-full border-0"
                                                         style={{ height: 600, position: 'relative', zIndex: 1 }}
                                                         title="Your Submission"
@@ -355,7 +356,7 @@ const LabTaskDetails = () => {
                                                         width={800} height={600}
                                                     />
                                                 </div>
-                                                <a href={`https://inkless-backend.vercel.app${submission.submittedDocument}`} target="_blank" rel="noreferrer" className="text-primary text-xs hover:underline font-bold mt-2 inline-block">Download your submission</a>
+                                                <a href={`${API_BASE_URL}${submission.submittedDocument}`} target="_blank" rel="noreferrer" className="text-primary text-xs hover:underline font-bold mt-2 inline-block">Download your submission</a>
                                             </div>
                                         ) : (
                                             <div className="flex flex-col items-center gap-3">
@@ -364,7 +365,7 @@ const LabTaskDetails = () => {
                                                 </div>
                                                 <div className="text-center">
                                                     <p className="font-bold text-foreground">File Submitted</p>
-                                                    <a href={`https://inkless-backend.vercel.app${submission.submittedDocument}`} target="_blank" rel="noreferrer" className="text-primary text-sm hover:underline font-medium">View current submission</a>
+                                                    <a href={`${API_BASE_URL}${submission.submittedDocument}`} target="_blank" rel="noreferrer" className="text-primary text-sm hover:underline font-medium">View current submission</a>
                                                 </div>
                                             </div>
                                         )}
@@ -527,7 +528,7 @@ const LabTaskDetails = () => {
                                                             {(answers[q._id]?.images || []).map((img, idx) => (
                                                                 <div key={idx} className="relative group rounded-xl overflow-hidden border border-border aspect-video bg-black/5">
                                                                     <img
-                                                                        src={img instanceof File ? URL.createObjectURL(img) : `https://inkless-backend.vercel.app${img}`}
+                                                                        src={img instanceof File ? URL.createObjectURL(img) : `${API_BASE_URL}${img}`}
                                                                         alt={`Upload ${idx}`}
                                                                         className="w-full h-full object-cover"
                                                                     />

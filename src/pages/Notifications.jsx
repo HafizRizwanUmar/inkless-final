@@ -1,3 +1,4 @@
+import API_BASE_URL from '../config';
 import React, { useState, useEffect } from 'react';
 import { Bell, CheckCircle2, Clock, Trash2, Filter, Mail, Shield, AlertBox, BookOpen, ChevronRight, MoreVertical } from 'lucide-react';
 import SEO from '../components/SEO';
@@ -12,7 +13,7 @@ const Notifications = () => {
     const fetchNotifications = async () => {
         try {
             const token = localStorage.getItem('token');
-            const res = await axios.get('https://inkless-backend.vercel.app/api/notifications', {
+            const res = await axios.get(`${API_BASE_URL}/api/notifications`, {
                 headers: { 'x-auth-token': token }
             });
             setNotifications(res.data);
@@ -30,7 +31,7 @@ const Notifications = () => {
     const markAllAsRead = async () => {
         try {
             const token = localStorage.getItem('token');
-            await axios.put('https://inkless-backend.vercel.app/api/notifications/read-all', {}, {
+            await axios.put(`${API_BASE_URL}/api/notifications/read-all`, {}, {
                 headers: { 'x-auth-token': token }
             });
             setNotifications(notifications.map(n => ({ ...n, read: true })));
@@ -42,7 +43,7 @@ const Notifications = () => {
     const markAsRead = async (id) => {
         try {
             const token = localStorage.getItem('token');
-            await axios.put(`https://inkless-backend.vercel.app/api/notifications/read/${id}`, {}, {
+            await axios.put(`${API_BASE_URL}/api/notifications/read/${id}`, {}, {
                 headers: { 'x-auth-token': token }
             });
             setNotifications(notifications.map(n => n._id === id ? { ...n, read: true } : n));
@@ -54,7 +55,7 @@ const Notifications = () => {
     const deleteNotification = async (id) => {
         try {
             const token = localStorage.getItem('token');
-            await axios.delete(`https://inkless-backend.vercel.app/api/notifications/${id}`, {
+            await axios.delete(`${API_BASE_URL}/api/notifications/${id}`, {
                 headers: { 'x-auth-token': token }
             });
             setNotifications(notifications.filter(n => n._id !== id));

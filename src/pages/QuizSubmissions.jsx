@@ -1,3 +1,4 @@
+import API_BASE_URL from '../config';
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -43,13 +44,13 @@ const QuizSubmissions = () => {
                 if (!token) return;
 
                 const [submissionsRes, aiStatusRes, quizRes] = await Promise.all([
-                    axios.get(`https://inkless-backend.vercel.app/api/quizzes/submissions/${quizId}`, {
+                    axios.get(`${API_BASE_URL}/api/quizzes/submissions/${quizId}`, {
                         headers: { 'x-auth-token': token }
                     }),
-                    axios.get(`https://inkless-backend.vercel.app/api/quizzes/ai-status`, {
+                    axios.get(`${API_BASE_URL}/api/quizzes/ai-status`, {
                         headers: { 'x-auth-token': token }
                     }),
-                    axios.get(`https://inkless-backend.vercel.app/api/quizzes/${quizId}`, {
+                    axios.get(`${API_BASE_URL}/api/quizzes/${quizId}`, {
                         headers: { 'x-auth-token': token }
                     })
                 ]);
@@ -71,12 +72,12 @@ const QuizSubmissions = () => {
         setIsProcessingAI(true);
         try {
             const token = localStorage.getItem('token');
-            const res = await axios.post(`https://inkless-backend.vercel.app/api/quizzes/grade-all/${quizId}`, {}, {
+            const res = await axios.post(`${API_BASE_URL}/api/quizzes/grade-all/${quizId}`, {}, {
                 headers: { 'x-auth-token': token }
             });
             alert(res.data.msg);
             // Refresh data
-            const submissionsRes = await axios.get(`https://inkless-backend.vercel.app/api/quizzes/submissions/${quizId}`, {
+            const submissionsRes = await axios.get(`${API_BASE_URL}/api/quizzes/submissions/${quizId}`, {
                 headers: { 'x-auth-token': token }
             });
             setAttempts(submissionsRes.data);
@@ -93,7 +94,7 @@ const QuizSubmissions = () => {
         setIsSharing(true);
         try {
             const token = localStorage.getItem('token');
-            await axios.post(`https://inkless-backend.vercel.app/api/quizzes/share-results/${quizId}`, {}, {
+            await axios.post(`${API_BASE_URL}/api/quizzes/share-results/${quizId}`, {}, {
                 headers: { 'x-auth-token': token }
             });
             setQuiz({ ...quiz, resultsShared: true });
@@ -111,8 +112,8 @@ const QuizSubmissions = () => {
             setDownloading(type);
             const token = localStorage.getItem('token');
             const endpoint = type === 'excel'
-                ? `https://inkless-backend.vercel.app/api/quizzes/export/excel/${quizId}`
-                : `https://inkless-backend.vercel.app/api/quizzes/export/pdf-zip/${quizId}`;
+                ? `${API_BASE_URL}/api/quizzes/export/excel/${quizId}`
+                : `${API_BASE_URL}/api/quizzes/export/pdf-zip/${quizId}`;
             const ext = type === 'excel' ? 'xlsx' : 'zip';
             const mimeType = type === 'excel'
                 ? 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'

@@ -1,3 +1,4 @@
+import API_BASE_URL from '../config';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -11,7 +12,7 @@ const ArchivedClasses = () => {
     const fetchArchivedClasses = async () => {
         try {
             const token = localStorage.getItem('token');
-            const res = await axios.get('https://inkless-backend.vercel.app/api/classes/archived', {
+            const res = await axios.get(`${API_BASE_URL}/api/classes/archived`, {
                 headers: { 'x-auth-token': token }
             });
             setClasses(res.data);
@@ -29,7 +30,7 @@ const ArchivedClasses = () => {
     const handleRestore = async (classId) => {
         try {
             const token = localStorage.getItem('token');
-            await axios.put(`https://inkless-backend.vercel.app/api/classes/${classId}/archive`, {}, {
+            await axios.put(`${API_BASE_URL}/api/classes/${classId}/archive`, {}, {
                 headers: { 'x-auth-token': token }
             });
             // Refresh list

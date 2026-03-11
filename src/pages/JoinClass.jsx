@@ -1,3 +1,4 @@
+import API_BASE_URL from '../config';
 import React, { useState } from 'react';
 import { Search, Plus, BookOpen, User, Hash, ArrowRight, ShieldCheck, CheckCircle2, MoreVertical, X } from 'lucide-react';
 import SEO from '../components/SEO';
@@ -15,7 +16,7 @@ const JoinClass = () => {
 
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch('https://inkless-backend.vercel.app/api/classes/join', {
+            const res = await fetch(`${API_BASE_URL}/api/classes/join`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

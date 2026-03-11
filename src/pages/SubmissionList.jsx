@@ -1,3 +1,4 @@
+import API_BASE_URL from '../config';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -21,8 +22,8 @@ const SubmissionList = () => {
                 setRole(userRole);
 
                 const endpoint = userRole === 'teacher'
-                    ? 'https://inkless-backend.vercel.app/api/submissions/teacher/pending'
-                    : 'https://inkless-backend.vercel.app/api/submissions/student/pending';
+                    ? `${API_BASE_URL}/api/submissions/teacher/pending`
+                    : `${API_BASE_URL}/api/submissions/student/pending`;
 
                 const res = await axios.get(endpoint, {
                     headers: { 'x-auth-token': token }

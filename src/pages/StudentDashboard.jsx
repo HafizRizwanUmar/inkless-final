@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { BookOpen, Calendar, CheckSquare, Clock, GraduationCap, TrendingUp, Search, Plus, Filter, MessageSquare, AlertCircle, ChevronRight, LayoutDashboard, User, FolderOpen } from 'lucide-react';
 import SEO from '../components/SEO';
+import API_BASE_URL from '../config';
 import { motion } from 'framer-motion';
 
 const StudentClassCard = ({ title, section, teacher, theme, classId, nextAssignment }) => (
@@ -72,7 +73,7 @@ const StudentDashboard = () => {
             try {
                 const token = localStorage.getItem('token');
                 const hdrs = { headers: { 'x-auth-token': token } };
-                const res = await fetch('https://inkless-backend.vercel.app/api/classes', { headers: { 'x-auth-token': token } });
+                const res = await fetch(`${API_BASE_URL}/api/classes`, { headers: { 'x-auth-token': token } });
                 const classData = await res.json();
 
                 // Fetch next assignment for each class
@@ -81,10 +82,10 @@ const StudentDashboard = () => {
                 const enrichedClasses = await Promise.all(classData.map(async (cls) => {
                     try {
                         // Fetch both Assignments and Labs
-                        const resAss = await fetch(`https://inkless-backend.vercel.app/api/assignments/class/${cls._id}`, hdrs);
+                        const resAss = await fetch(`${API_BASE_URL}/api/assignments/class/${cls._id}`, hdrs);
                         const assignments = await resAss.json();
 
-                        const resLab = await fetch(`https://inkless-backend.vercel.app/api/lab-tasks/class/${cls._id}`, hdrs);
+                        const resLab = await fetch(`${API_BASE_URL}/api/lab-tasks/class/${cls._id}`, hdrs);
                         const labs = await resLab.json();
 
                         // Combine and sort by deadline > now

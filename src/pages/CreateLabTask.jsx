@@ -1,3 +1,4 @@
+import API_BASE_URL from '../config';
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -67,7 +68,7 @@ const CreateLabTask = () => {
                 submitData.append('taskDocument', taskDocument);
             }
 
-            await axios.post('https://inkless-backend.vercel.app/api/lab-tasks', submitData, {
+            await axios.post(`${API_BASE_URL}/api/lab-tasks`, submitData, {
                 headers: {
                     'x-auth-token': token,
                     'Content-Type': 'multipart/form-data'

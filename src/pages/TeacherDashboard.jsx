@@ -1,3 +1,4 @@
+import API_BASE_URL from '../config';
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Plus, BookOpen, User, Calendar, FileText, CheckCircle, Clock, AlertCircle, ChevronRight, Search, LayoutDashboard, MoreVertical, Star, MoreHorizontal, ArrowUpRight, Trash2, Edit2, X, Loader } from 'lucide-react';
@@ -203,7 +204,7 @@ const TeacherDashboard = () => {
     const fetchClasses = async () => {
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch('https://inkless-backend.vercel.app/api/classes', {
+            const res = await fetch(`${API_BASE_URL}/api/classes`, {
                 headers: { 'x-auth-token': token }
             });
             const data = await res.json();
@@ -224,7 +225,7 @@ const TeacherDashboard = () => {
 
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch(`https://inkless-backend.vercel.app/api/classes/${classId}`, {
+            const res = await fetch(`${API_BASE_URL}/api/classes/${classId}`, {
                 method: 'DELETE',
                 headers: { 'x-auth-token': token }
             });
@@ -247,7 +248,7 @@ const TeacherDashboard = () => {
     const handleSaveClass = async (classId, updatedData) => {
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch(`https://inkless-backend.vercel.app/api/classes/${classId}`, {
+            const res = await fetch(`${API_BASE_URL}/api/classes/${classId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
