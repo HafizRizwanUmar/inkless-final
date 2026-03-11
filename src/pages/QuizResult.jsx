@@ -1,10 +1,12 @@
 import React from 'react';
 import { Award, CheckCircle, XCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 
 const QuizResult = () => {
     return (
-        <div className="max-w-4xl mx-auto space-y-8">
+        <div className="max-w-4xl mx-auto space-y-8 animate-in fade-in duration-700">
+            <SEO title="Quiz Result" description="Check your performance, correct answers, and feedback for your recently completed quiz." />
             <div className="text-center space-y-2">
                 <h1 className="text-3xl font-bold">Quiz Results</h1>
                 <p className="text-secondary-foreground">Mid-Term: Artificial Intelligence</p>

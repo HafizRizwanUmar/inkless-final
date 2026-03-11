@@ -1,5 +1,6 @@
 import React from 'react';
-import { Shield, Users, Server, Activity } from 'lucide-react';
+import { Users, BookOpen, Shield, Settings, Activity, AlertTriangle, FileText, Database, TrendingUp, Search, Filter } from 'lucide-react';
+import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 
 const StatCard = ({ icon: Icon, label, value, color }) => (
@@ -19,7 +20,9 @@ const StatCard = ({ icon: Icon, label, value, color }) => (
 
 const AdminDashboard = () => {
     return (
-        <div className="space-y-8">
+        <div className="max-w-7xl mx-auto space-y-8 animate-in fade-in duration-500">
+            <SEO title="Admin Dashboard" description="System oversight, user management, and administrative configurations for Inkless." />
+            {/* Header Section */}
             <div className="flex justify-between items-center">
                 <div>
                     <h1 className="text-3xl font-bold mb-2">System Administration</h1>

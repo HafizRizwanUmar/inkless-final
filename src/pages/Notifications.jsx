@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-import { Bell, FileText, CheckCircle, Info, Trash2 } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Bell, CheckCircle2, Clock, Trash2, Filter, Mail, Shield, AlertBox, BookOpen, ChevronRight, MoreVertical } from 'lucide-react';
+import SEO from '../components/SEO';
 import { motion, AnimatePresence } from 'framer-motion';
+import axios from 'axios'; // Assuming axios is used and needs to be imported
 
 const Notifications = () => {
     const [filter, setFilter] = useState('All');
@@ -65,9 +67,9 @@ const Notifications = () => {
 
     const getIcon = (type) => {
         switch (type) {
-            case 'ASSIGNMENT': return <FileText className="w-5 h-5 text-brand-accent" />;
-            case 'QUIZ': return <CheckCircle className="w-5 h-5 text-green-400" />;
-            case 'SYSTEM': return <Info className="w-5 h-5 text-yellow-400" />;
+            case 'ASSIGNMENT': return <BookOpen className="w-5 h-5 text-brand-accent" />; // Changed from FileText
+            case 'QUIZ': return <CheckCircle2 className="w-5 h-5 text-green-400" />; // Changed from CheckCircle
+            case 'SYSTEM': return <Shield className="w-5 h-5 text-yellow-400" />; // Changed from Info
             default: return <Bell className="w-5 h-5 text-gray-400" />;
         }
     };
@@ -75,7 +77,9 @@ const Notifications = () => {
     const filteredNotifications = filter === 'All' ? notifications : notifications.filter(n => n.type === filter.toUpperCase());
 
     return (
-        <div className="max-w-4xl mx-auto space-y-6">
+        <div className="max-w-4xl mx-auto py-8 px-4 animate-in fade-in duration-700">
+            <SEO title="Notifications" description="Stay updated with your latest alerts, graded assignments, and class announcements." />
+            {/* Header */}
             <div className="flex justify-between items-center">
                 <h1 className="text-2xl font-bold">Notifications</h1>
                 <button className="text-sm text-primary hover:underline">Mark all as read</button>

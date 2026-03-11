@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const slides = [
     {
@@ -37,6 +38,7 @@ const Onboarding = () => {
 
     return (
         <div className="h-screen w-full bg-background text-foreground flex flex-col md:flex-row overflow-hidden">
+            <SEO title="Get Started" description="Discover Inkless - Streamlined coursework, AI-driven grading, and smart educational analytics." />
             {/* Image Section */}
             <div className="w-full md:w-1/2 h-1/2 md:h-full relative overflow-hidden bg-surface">
                 <AnimatePresence mode="wait">

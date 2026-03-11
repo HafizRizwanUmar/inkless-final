@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Trash, Save, ArrowLeft, Wand2, X, Clock, Brain, PenTool, AlignLeft, List, ChevronRight, ChevronLeft, Check, AlertCircle } from 'lucide-react';
+import { Plus, Trash2, CheckCircle2, AlertCircle, Clock, Settings, Save, Sparkles, ChevronLeft, Layout, List, Type, FileText, Code, ChevronRight, Wand2, ArrowLeft, Brain, PenTool, AlignLeft, Check } from 'lucide-react';
+import SEO from '../components/SEO';
 import axios from 'axios';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -202,7 +203,9 @@ const QuizBuilder = () => {
 
     // ========== RENDER ==========
     return (
-        <div className="max-w-3xl mx-auto p-6 pb-32">
+        <div className="max-w-5xl mx-auto p-6 space-y-8 animate-in fade-in duration-500">
+            <SEO title="Quiz Builder" description="Create and customize interactive quizzes with diverse question types and AI generation assistance." />
+            {/* Header */}
             <div className="flex items-center gap-4 mb-8">
                 <button onClick={() => step === 0 ? navigate(-1) : setStep(s => s - 1)} className="p-2 hover:bg-surface rounded-full transition-colors">
                     <ArrowLeft className="w-5 h-5 text-secondary-foreground" />

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Search, Plus, BookOpen, User, Hash, ArrowRight, ShieldCheck, CheckCircle2, MoreVertical, X } from 'lucide-react';
+import SEO from '../components/SEO';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
@@ -36,7 +38,9 @@ const JoinClass = () => {
     };
 
     return (
-        <div className="min-h-screen bg-background flex items-center justify-center p-4">
+        <div className="max-w-4xl mx-auto py-12 px-4 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+            <SEO title="Join Class" description="Enroll in a new classroom using a unique class code provided by your teacher." />
+            {/* Header Section */}
             {/* Overlay background effect */}
             <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
 

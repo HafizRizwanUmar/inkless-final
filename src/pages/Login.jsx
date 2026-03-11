@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -58,6 +59,7 @@ const Login = () => {
 
     return (
         <div className="min-h-screen grid grid-cols-1 lg:grid-cols-2 bg-background font-sans">
+            <SEO title="Login" description="Sign in to your Inkless account to manage your classes and assignments." />
             {/* Left Side - Hero/Branding */}
             <div className="hidden lg:flex flex-col justify-center items-center bg-surface relative overflow-hidden border-r border-border p-12">
                 <div className="relative z-10 text-center space-y-6 max-w-lg">

@@ -6,6 +6,7 @@ import {
     Pen, Eraser, Trash2, Layout, CheckSquare, MessageSquare,
     FileText, Undo2, Download
 } from 'lucide-react';
+import SEO from '../components/SEO';
 
 // ─────────────────────────── Annotation Canvas ────────────────────────────
 // Renders on top of a <img> or <iframe> and allows drawing annotations.
@@ -233,7 +234,8 @@ const GradingPage = () => {
     const COLORS = ['#ef4444', '#22c55e', '#f59e0b', '#3b82f6', '#a855f7', '#000000'];
 
     return (
-        <div className="flex flex-col h-screen bg-background overflow-hidden">
+        <div className="min-h-screen bg-background">
+            <SEO title="Grading System" description="Evaluate student submissions with AI assistance and expert tools for precise feedback." />
             {/* Header */}
             <div className="h-14 border-b border-border bg-surface px-4 flex items-center justify-between shrink-0 z-20 shadow-sm">
                 <div className="flex items-center gap-3">

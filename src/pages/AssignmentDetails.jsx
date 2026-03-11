@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { ArrowLeft, Upload, FileText, CheckCircle, Clock } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const AssignmentDetails = () => {
     const location = useLocation();
@@ -92,6 +93,7 @@ const AssignmentDetails = () => {
 
     return (
         <div className="max-w-4xl mx-auto p-6 space-y-6">
+            <SEO title={assignment?.title || 'Assignment Details'} description={`View details and submit your work for ${assignment?.title || 'this assignment'}.`} />
             <button
                 onClick={() => navigate(-1)}
                 className="flex items-center text-secondary-foreground hover:text-foreground"

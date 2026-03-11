@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Plus, MoreVertical, Trash2, Edit2, X, Loader } from 'lucide-react';
+import { Plus, BookOpen, User, Calendar, FileText, CheckCircle, Clock, AlertCircle, ChevronRight, Search, LayoutDashboard, MoreVertical, Star, MoreHorizontal, ArrowUpRight, Trash2, Edit2, X, Loader } from 'lucide-react';
+import SEO from '../components/SEO';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const ClassCard = ({ classData, onEdit, onDelete }) => {
@@ -269,7 +270,9 @@ const TeacherDashboard = () => {
     if (loading) return <div className="p-6 text-center text-secondary-foreground">Loading classes...</div>;
 
     return (
-        <div className="space-y-6">
+        <div className="max-w-7xl mx-auto space-y-8 animate-in fade-in duration-500">
+            <SEO title="Teacher Dashboard" description="Manage your classes, track student progress, and grade assignments with AI-powered tools." />
+            {/* Header Section */}
             <div className="flex justify-between items-center mb-6">
                 <div>
                     <h1 className="text-2xl font-semibold text-foreground">Teaching</h1>

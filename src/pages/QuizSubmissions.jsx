@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { ArrowLeft, User, AlertTriangle, ShieldOff, Eye, Download, FileSpreadsheet, FileArchive } from 'lucide-react';
+import { Search, Filter, ChevronLeft, User, Mail, Calendar, CheckCircle, Clock, AlertCircle, MoreHorizontal, Download, Share2, Sparkles, AlertTriangle, ShieldCheck } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const StrikeBadge = ({ count, label }) => {
     if (count === 0) return (
@@ -142,6 +143,7 @@ const QuizSubmissions = () => {
 
     return (
         <div className="max-w-5xl mx-auto p-6">
+            <SEO title="Quiz Submissions" description="Review student quiz attempts, AI-powered grading insights, and share results." />
             {/* Header */}
             <button onClick={() => navigate(-1)} className="flex items-center gap-2 text-secondary-foreground hover:text-primary mb-6 transition-colors">
                 <ArrowLeft className="w-4 h-4" /> Back

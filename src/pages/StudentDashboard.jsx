@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { User, FolderOpen, TrendingUp, Plus, CheckCircle } from 'lucide-react';
+import { BookOpen, Calendar, CheckSquare, Clock, GraduationCap, TrendingUp, Search, Plus, Filter, MessageSquare, AlertCircle, ChevronRight, LayoutDashboard, User } from 'lucide-react';
+import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 
 const StudentClassCard = ({ title, section, teacher, theme, classId, nextAssignment }) => (
@@ -44,7 +45,7 @@ const StudentClassCard = ({ title, section, teacher, theme, classId, nextAssignm
                     </div>
                 ) : (
                     <div className="flex items-center gap-2 text-sm text-secondary-foreground italic py-2">
-                        <CheckCircle className="w-4 h-4" /> No pending work
+                        <CheckSquare className="w-4 h-4" /> No pending work
                     </div>
                 )}
             </div>
@@ -53,7 +54,7 @@ const StudentClassCard = ({ title, section, teacher, theme, classId, nextAssignm
         {/* Card Footer */}
         <div className="border-t border-border p-3 flex justify-end space-x-2 bg-background/50">
             <button className="p-2 hover:bg-black/5 rounded-full text-secondary-foreground hover:text-primary transition-colors tooltip" title="Your Work">
-                <FolderOpen className="w-5 h-5" />
+                <BookOpen className="w-5 h-5" />
             </button>
             <button className="p-2 hover:bg-black/5 rounded-full text-secondary-foreground hover:text-primary transition-colors tooltip" title="Performance">
                 <TrendingUp className="w-5 h-5" />
@@ -110,7 +111,9 @@ const StudentDashboard = () => {
     if (loading) return <div className="p-6 text-center text-secondary-foreground py-20">Loading your profile...</div>;
 
     return (
-        <div className="space-y-6">
+        <div className="max-w-7xl mx-auto space-y-8 animate-in fade-in duration-700">
+            <SEO title="Student Dashboard" description="Access your enrolled classes, upcoming assignments, and track your academic performance." />
+            {/* Top Toolbar */}
             <div className="flex justify-between items-center mb-6">
                 <div>
                     <h1 className="text-2xl font-semibold text-foreground">My Classes</h1>

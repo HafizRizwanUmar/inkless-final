@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar as CalIcon, CheckCircle, Clock, AlertCircle, ChevronRight, Filter } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, Clock, Plus, Filter, MoreVertical, BookOpen, PenTool, Code, User, MapPin } from 'lucide-react';
+import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -49,7 +50,9 @@ const Calendar = () => {
     const past = tasks.filter(t => new Date(t.deadline) <= now);
 
     return (
-        <div className="max-w-5xl mx-auto space-y-8 pb-12">
+        <div className="max-w-7xl mx-auto space-y-8 animate-in fade-in duration-500">
+            <SEO title="Calendar" description="Track your academic schedule, assignment deadlines, and upcoming quizzes in one unified view." />
+            {/* Header Section */}
             <div className="flex justify-between items-center">
                 <div>
                     <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-brand-muted">Task Timeline</h1>

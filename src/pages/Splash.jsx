@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 
 const Splash = () => {
     const navigate = useNavigate();
@@ -15,6 +16,7 @@ const Splash = () => {
 
     return (
         <div className="h-screen w-full bg-background flex flex-col items-center justify-center text-foreground">
+            <SEO title="Welcome" description="Inkless - Smart. Paperless. AI-Powered. Experience the future of education." />
             <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}

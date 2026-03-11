@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { User, Mail, Lock, Save, Camera } from 'lucide-react';
+import { User, Mail, Shield, Camera, Edit2, Key, Bell, Globe, LogOut, ChevronRight, CheckCircle2, AlertCircle, Save, X } from 'lucide-react';
+import SEO from '../components/SEO';
 import axios from 'axios';
 
 const UserProfile = () => {
@@ -67,8 +68,9 @@ const UserProfile = () => {
     if (loading) return <div className="p-8 text-center text-secondary-foreground">Loading Profile...</div>;
 
     return (
-        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Sidebar Profile Card */}
+        <div className="max-w-5xl mx-auto pb-12 animate-in fade-in duration-700">
+            <SEO title="My Profile" description="Manage your account settings, profile information, and security preferences." />
+            {/* Profile Header */}
             <div className="md:col-span-1 space-y-6">
                 <div className="bg-surface rounded-xl border border-border p-6 flex flex-col items-center text-center">
                     <div className="relative mb-4">

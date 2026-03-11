@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { ArrowLeft, Clock, Save, FileText, Upload, CheckCircle, Code, Image as ImageIcon, Terminal, AlertCircle, Pen } from 'lucide-react';
+import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 
 // Read-only annotation display for students
@@ -263,6 +264,7 @@ const LabTaskDetails = () => {
 
     return (
         <div className="min-h-screen bg-background pb-20 md:pb-12">
+            <SEO title={lab?.title || 'Lab Task'} description={`Work on hands-on coding challenges and submit your lab project for ${lab?.title || 'this task'}.`} />
             {/* Professional Header */}
             <div className="bg-surface border-b border-border sticky top-0 z-20 shadow-sm">
                 <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">

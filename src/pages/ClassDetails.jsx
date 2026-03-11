@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FileText, Users, BarChart2, Settings, PenTool, Plus, PlayCircle, Code, ChevronRight, Clock, Archive, HelpCircle, CheckCircle } from 'lucide-react';
+import SEO from '../components/SEO';
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -83,6 +84,10 @@ const ClassDetails = () => {
 
     return (
         <div className="min-h-screen bg-background pb-12">
+            <SEO
+                title={classData?.title || 'Class Details'}
+                description={`Class details, assignments, quizzes, and analytics for ${classData?.title || 'your classroom'}.`}
+            />
             {/* Professional Header */}
             <div className="relative overflow-hidden bg-black text-white shadow-xl h-64">
                 <img

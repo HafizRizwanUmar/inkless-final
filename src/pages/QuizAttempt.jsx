@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Clock, HelpCircle, ChevronRight, ChevronLeft, CheckCircle, AlertTriangle, Maximize2, Trophy, XCircle } from 'lucide-react';
+import { Clock, AlertCircle, CheckCircle2, ChevronRight, ChevronLeft, Send, Timer, HelpCircle, ShieldAlert, BookOpen, User } from 'lucide-react';
+import SEO from '../components/SEO';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -267,8 +268,9 @@ const QuizAttempt = () => {
         const pctColor = pct >= 70 ? 'from-green-400 to-emerald-500' : pct >= 40 ? 'from-orange-400 to-amber-500' : 'from-red-400 to-rose-500';
 
         return (
-            <div className="min-h-screen bg-background p-4 md:p-8 pb-24 overflow-y-auto">
-                <div className="max-w-3xl mx-auto">
+            <div className="min-h-screen bg-background p-4 md:p-8">
+                <SEO title={quiz?.title ? `Attempting ${quiz.title}` : 'Quiz Attempt'} description="Take your quiz, submit answers, and receive instant feedback on MCQs." />
+                <div className="max-w-4xl mx-auto space-y-8">
                     {/* Score Card */}
                     <div className={`bg-gradient-to-br ${pct >= 70 ? 'from-green-500/10 to-emerald-500/10 border-green-500/20' : pct >= 40 ? 'from-orange-500/10 to-amber-500/10 border-orange-500/20' : 'from-red-500/10 to-rose-500/10 border-red-500/20'} border rounded-3xl p-8 text-center mb-8 relative overflow-hidden`}>
                         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(34,197,94,0.1),transparent)]" />
